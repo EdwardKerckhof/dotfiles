@@ -1,0 +1,136 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2034
+# This issue is ignored because it is part of a larger file that calls upon all variables listed
+
+# To edit this file copy it to `${HOME}/.config/dmscripts/config`
+# `cp /etc/dmscripts/config ${HOME}/.config/dmscripts/config`
+
+# Defined variables, modify anything in quotes to your prefered software
+
+DMENU="dmenu"
+
+DMBROWSER="chromium"
+
+DMTERM="alacritty -e"
+
+DMEDITOR="${DMTERM} nvim"
+
+# dm-logout
+logout_locker='slock'
+
+# dm-bookman 
+bookman_show_source=1
+
+# dm-confedit
+confedit_editor="$DMEDITOR"
+declare -A confedit_list
+confedit_list[confedit]="$HOME/.config/dmscripts/config"
+confedit_list[alacritty]="$HOME/.config/alacritty/alacritty.yml"
+confedit_list[bash]="$HOME/.bashrc"
+confedit_list[i3]="$HOME/.config/i3/config"
+confedit_list[neovim]="$HOME/.config/nvim/init.vim"
+confedit_list[picom]="$HOME/.config/picom/picom.conf"
+confedit_list[polybar]="$HOME/.config/polybar/config"
+confedit_list[ssh]="$HOME/.ssh/config"
+confedit_list[vim]="$HOME/.vimrc"
+confedit_list[xmonad]="$HOME/.xmonad/xmonad.hs"
+confedit_list[xmobar mon1]="$HOME/.config/xmobar/xmobarrc0"
+confedit_list[xmobar mon2]="$HOME/.config/xmobar/xmobarrc1"
+confedit_list[xinitrc]="$HOME/.xinitrc"
+confedit_list[xresources]="$HOME/.Xresources"
+confedit_list[zsh]="$HOME/.zshrc"
+
+# dm-reddit config
+declare -a reddit_list=(
+"r/archlinux"
+"r/bash"
+"r/commandline"
+"r/freesoftware"
+"r/linux"
+"r/linux4noobs"
+"r/linuxmasterrace"
+"r/linuxquestions"
+"r/suckless"
+"r/Ubuntu"
+"r/unixporn"
+"r/vim"
+)
+
+# Search engine config 
+websearch_browser="$DMBROWSER"
+declare -A websearch
+# Syntax:
+# websearch[name]="https://www.example.com/search?q="
+
+# Search Engines
+websearch[brave]="https://search.brave.com/search?q="
+websearch[duckduckgo]="https://duckduckgo.com/?q="
+websearch[gemini search \(https\)]="https://portal.mozz.us/gemini/geminispace.info/search%3F"
+websearch[google]="https://www.google.com/search?q="
+# Information/News
+websearch[bbcnews]="https://www.bbc.co.uk/search?q="
+websearch[cnn]="https://www.cnn.com/search?q="
+websearch[googlenews]="https://news.google.com/search?q="
+websearch[wikipedia]="https://en.wikipedia.org/w/index.php?search="
+websearch[wiktionary]="https://en.wiktionary.org/w/index.php?search="
+# Social Media
+websearch[reddit]="https://www.reddit.com/search/?q="
+websearch[youtube]="https://www.youtube.com/results?search_query="
+# Online Shopping
+websearch[amazon]="https://www.amazon.com/s?k="
+websearch[ebay]="https://www.ebay.com/sch/i.html?&_nkw="
+# Linux
+websearch[archaur]="https://aur.archlinux.org/packages/?O=0&K="
+websearch[archpkg]="https://archlinux.org/packages/?sort=&q="
+websearch[archwiki]="https://wiki.archlinux.org/index.php?search="
+# Development
+websearch[github]="https://github.com/search?q="
+websearch[gitlab]="https://gitlab.com/search?search="
+websearch[googleOpenSource]="https://opensource.google/projects/search?q="
+websearch[sourceforge]="https://sourceforge.net/directory/?q="
+websearch[stackoverflow]="https://stackoverflow.com/search?q="
+
+# dm-youtube config
+youtube_browser="$DMBROWSER"
+# Think of these as your "subscribed channels", name the channel in the square brackets then put the channel URL in the quotation marks
+# Syntax: youtube_channels[name]="https://www.youtube.com/link/to/channel"
+
+declare -A youtube_channels
+youtube_channels[distrotube]="https://www.youtube.com/c/DistroTube/featured"
+
+# dm-colpick config
+declare -A colpick_list
+colpick_list[black]="#282a36"
+colpick_list[red]="#ff5555"
+colpick_list[green]="#5af78e"
+colpick_list[yellow]="#f1fa8c"
+colpick_list[blue]="#57c7ff"
+colpick_list[magenta]="#ff6ac1"
+colpick_list[cyan]="#8be9fd"
+colpick_list[white]="#f1f1f0"
+colpick_list[orange]="#ffb86c"
+colpick_list[purple]="#bd9cf9"
+
+# dm-weather config
+declare -A weather_location
+weather_location[Ghent]="Ghent"
+weather_opts="m" # Always use metric units (celsius)
+# weather_opts="u" # Always use US units (fahrenheit)
+# see: https://github.com/chubin/wttr.in
+
+# dm-currencies config
+
+# Chose how you want to display the currencies (default: "names")
+# currency_names="codes"
+
+# "auto" will get currencies dynamically, "manual" will only use the currencies you define (default: "auto")
+# defined currencies will still be included when set to auto
+# currency_method="manual"
+
+declare -A currencies
+# currencies[Dollar]="USD"
+# currencies[Pound]="GBP"
+# currencies[Monero]="XMR"
+# see: https://rate.sx/:currencies and https://rate.sx/:coins
+
+_revision=17

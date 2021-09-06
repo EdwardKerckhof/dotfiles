@@ -1,0 +1,14 @@
+[user]
+	email = edward@zonedev.be
+	name = EdwardKerckhofZoneDev
+	signingkey = 3DEA8F39B22C88B4
+[core]
+	editor = lvim
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
