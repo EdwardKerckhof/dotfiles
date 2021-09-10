@@ -48,4 +48,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'junegunn/fzf.vim'
   " VimGrepper
   Plug 'mhinz/vim-grepper'
+  " Markdown preview
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 call plug#end()
