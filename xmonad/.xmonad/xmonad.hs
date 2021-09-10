@@ -224,7 +224,7 @@ myManageHook =
     -- using 'doShift ( myWorkspaces !! 7)' sends program to workspace 8!
     -- I'm doing it this way because otherwise I would have to write out the full
     -- name of my workspaces and the names would be very long if using clickable workspaces.
-    [ 
+    [
       className =? "confirm"                       --> doFloat
      , className =? "file_progress"                 --> doFloat
      , className =? "dialog"                        --> doFloat
@@ -288,6 +288,7 @@ myKeys =
     ("M-d", spawn (mySocialApp)),
     ("M-e", spawn (myMailApp)),
     ("M-f", spawn (myFileManager)),
+    ("M-v", spawn "virt-manager"),
     ("M-S-s", spawn "~/bash_scripts/dm-scrot.sh"),
     ("M-S-c", spawn "dm-confedit"),
     ("M-S-k", spawn "dm-kill"),
@@ -358,7 +359,7 @@ main = do
   xmonad $
     ewmh
       def
-        { 
+        {
           keys = belgianKeys <+> keys belgianConfig,
           -- simple stuff
           terminal           = myTerminal,
