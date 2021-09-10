@@ -7,8 +7,8 @@ Managed using GNU Stow.
 1. Clone this repo:
 
    ```shell
-   git clone --recursive https://github.com/woefe/dotfiles.git $HOME/.dotfiles-woefe
-   cd $HOME/.dotfiles-woefe
+   git clone --recursive https://github.com/woefe/dotfiles.git $HOME/.dotfiles-edward
+   cd $HOME/.dotfiles-edward
    ```
 
 2. Install GNU Stow:
