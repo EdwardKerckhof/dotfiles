@@ -17,11 +17,11 @@ ZSH_THEME='powerlevel10k/powerlevel10k'
 # Uncomment the following line to automatically update without prompting.
 DISABLE_UPDATE_PROMPT='true'
 
-plugins=(git 
-         zsh-autosuggestions 
-         zsh-syntax-highlighting 
-         zsh-nvm 
-         zsh-yarn-completions 
+plugins=(git
+         zsh-autosuggestions
+         zsh-syntax-highlighting
+         zsh-nvm
+         zsh-yarn-completions
          git-flow-completion)
 
 # Sourcing oh-my-zsh
@@ -36,8 +36,8 @@ alias lt='exa -aT --color=always --group-directories-first' # tree listing
 alias yaysyu='yay -Syu --noconfirm'                         # update standard pkgs and AUR pkgs (yay)
 alias cleanup='sudo pacman -Rns (pacman -Qtdq)'             # remove orphaned packages
 # grep
-alias grep='grep --color=auto'                              
-alias egrep='egrep --color=auto'                            
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 # confirmations
 alias cp='cp -i'
@@ -60,9 +60,10 @@ alias mirror='sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 alias mirrord='sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist'
 alias mirrors='sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist'
 alias mirrora='sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist'
-# nvim 
+# nvim
 alias vim='nvim'
 alias vi='nvim'
+alias v='nvim'
 
 ### KEY BINDINGS ###
 bindkey -s '^o' 'ranger^M'
