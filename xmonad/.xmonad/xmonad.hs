@@ -324,10 +324,10 @@ myKeys =
     ("M-m", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts), -- Toggles noborder/full
 
     -- KB_GROUP Window resizing
-    ("M-C-<Left>", sendMessage Shrink),
-    ("M-C-<Right>", sendMessage Expand),
-    ("M-C-<Down>", sendMessage MirrorShrink),
-    ("M-C-<Up>", sendMessage MirrorExpand),
+    ("M-C-h", sendMessage Shrink),
+    ("M-C-l", sendMessage Expand),
+    ("M-C-k", sendMessage MirrorShrink),
+    ("M-C-k", sendMessage MirrorExpand),
     -- KB_GROUP Scratchpads
     ("M-p t", namedScratchpadAction myScratchPads "terminal"),
     ("M-p c", namedScratchpadAction myScratchPads "calculator"),
