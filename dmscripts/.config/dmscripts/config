@@ -7,9 +7,9 @@
 
 # Defined variables, modify anything in quotes to your prefered software
 
-DMENU="dmenu"
+DMENU="dmenu -i -l 20 -p"
 
-DMBROWSER="chromium"
+DMBROWSER="brave"
 
 DMTERM="alacritty -e"
 
@@ -18,8 +18,33 @@ DMEDITOR="${DMTERM} nvim"
 # dm-logout
 logout_locker='slock'
 
+case "${0##*-}" in
+#  "colpick") DMENU="dmenu -i -p";;
+#  "confedit") DMENU="dmenu -i -l 30 -p";;
+#  "youtube") DMBROWSER="firefox";;
+  *);;
+esac
+
 # dm-bookman 
 bookman_show_source=1
+
+# dm-sounds
+sounds_dir="${HOME}/.config/dmscripts/dmsounds"
+
+# dm-setbg
+setbg_dir="${HOME}/Pictures/Wallpapers"
+
+# Set this to 1 if you want to use imv and wayland, 0 if you want to use sxiv
+# Note that sxiv is X11 only, you need to mark the image you want to use.
+use_imv=1 
+
+# dm-maim
+maim_dir="${HOME}/Screenshots"
+maim_file_prefix="maim"
+
+# dm-note
+note_dir="${HOME}/.config/dmscripts/dmnote"
+
 
 # dm-confedit
 confedit_editor="$DMEDITOR"
@@ -96,7 +121,7 @@ youtube_browser="$DMBROWSER"
 # Syntax: youtube_channels[name]="https://www.youtube.com/link/to/channel"
 
 declare -A youtube_channels
-youtube_channels[distrotube]="https://www.youtube.com/c/DistroTube/featured"
+# youtube_channels[yt]="https://www.youtube.com/"
 
 # dm-colpick config
 declare -A colpick_list
@@ -113,8 +138,8 @@ colpick_list[purple]="#bd9cf9"
 
 # dm-weather config
 declare -A weather_location
-weather_location[Ghent]="Ghent"
-weather_opts="m" # Always use metric units (celsius)
+# weather_location[Ghent]="Ghent"
+# weather_opts="m" # Always use metric units (celsius)
 # weather_opts="u" # Always use US units (fahrenheit)
 # see: https://github.com/chubin/wttr.in
 
@@ -133,4 +158,4 @@ declare -A currencies
 # currencies[Monero]="XMR"
 # see: https://rate.sx/:currencies and https://rate.sx/:coins
 
-_revision=17
+_revision=22

@@ -78,7 +78,8 @@ myMusicPlayer :: String
 myMusicPlayer = "spotify"
 
 myEditor :: String
-myEditor = myTerminal ++ " -e nvim"
+--myEditor = myTerminal ++ " -e nvim"
+myEditor = "code"
 
 myFileManager :: String
 myFileManager = "pcmanfm"
@@ -212,7 +213,7 @@ myLayoutHook =
 -- Workspaces
 
 myWorkspaces :: [String]
-myWorkspaces = [" www ", " dev ", " chat ", " mus ", " mail ", " web ", " gfx ", " sys ", " vid "]
+myWorkspaces = [" www ", " dev ", " chat ", " mus ", " mail ", " web ", " game ", " sys ", " vid "]
 
 ------------------------------------------------------------------------
 -- Window rules
@@ -246,8 +247,7 @@ myManageHook =
      , className =? "Godot"                         --> doShift ( myWorkspaces !! 1 )
      , className =? "GitHub Desktop"                --> doShift ( myWorkspaces !! 1 )
      , className =? "discord"                       --> doShift ( myWorkspaces !! 2 )
-     , className =? "Spotify" --> doShift (myWorkspaces !! 3)
-     , title =? "Spotify Premium" --> doShift (myWorkspaces !! 3)
+     , title =? "Messenger call - Brave"            --> doShift ( myWorkspaces !! 2 )
      , className =? "Thunderbird" --> doShift (myWorkspaces !! 4)
      , isFullscreen --> doFullFloat
     ]
@@ -264,7 +264,7 @@ myStartupHook = do
   spawnOnce "nitrogen --restore &"
   spawnOnce "conky -c /home/edward/.config/conky/xmonad.conkyrc"
   spawnOnce "blueman-adapters &"
-  spawnOnce "xrandr --output DP-0 --mode 1920x1080 --rate 144  --output HDMI-0 --mode 1920x1080 --rate 60 --left-of DP-0 &"
+  spawnOnce "xrandr --output DP-2 --mode 1920x1080 --rate 144  --output HDMI-0 --mode 1920x1080 --rate 60 --left-of DP-2 &"
   spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
   setWMName "LG3D"
 
@@ -289,10 +289,12 @@ myKeys =
     ("M-e", spawn (myMailApp)),
     ("M-f", spawn (myFileManager)),
     ("M-v", spawn "virt-manager"),
+    ("M-r", spawn "runelite"),
+    ("M-i", spawn (myTerminal ++ " -e ~/dotfiles/cht.sh")),
     ("M-S-s", spawn "~/bash_scripts/dm-scrot.sh"),
     ("M-S-c", spawn "dm-confedit"),
-    ("M-S-k", spawn "dm-kill"),
     ("M-S-h", spawn "dm-hub"),
+    ("M-S-k", spawn "dm-kill"),
     ("M-<Delete>", spawn "dm-logout"),
     -- KB_GROUP Kill windows
     ("M-q", kill),

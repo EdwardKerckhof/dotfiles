@@ -77,6 +77,7 @@ bindkey '^j' down-line-or-beginning-search # Down
 colorscript random
 
 # Environment variables set everywhere
-export EDITOR='nvim'
+export EDITOR='code'
 export TERMINAL='alacritty'
 export BROWSER='brave'
+export PATH=/home/edward/Android/Sdk/platform-tools:$PATH
