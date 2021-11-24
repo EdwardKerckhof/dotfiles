@@ -8,12 +8,14 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +42 zsh/.config/zsh/.zshrc
+badd +61 ~/.config/zsh/.zshrc
+badd +7 zsh/.config/zsh/zsh-aliases
 argglobal
 %argdel
-$argadd zsh/.config/zsh/.zshrc
-edit zsh/.config/zsh/.zshrc
+$argadd ~/.config/zsh/.zshrc
+edit zsh/.config/zsh/zsh-aliases
 argglobal
+balt ~/.config/zsh/.zshrc
 setlocal fdm=manual
 setlocal fde=
 setlocal fmr={{{,}}}
@@ -24,13 +26,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 59 - ((25 * winheight(0) + 21) / 43)
+let s:l = 7 - ((6 * winheight(0) + 23) / 46)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 59
-normal! 067|
-lcd ~/dotfiles
+keepjumps 7
+normal! 017|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -43,7 +44,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
