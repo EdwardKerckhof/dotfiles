@@ -9,11 +9,11 @@
 
 DMENU="dmenu -i -l 20 -p"
 
-DMBROWSER="microsoft-edge-dev"
+DMBROWSER="brave"
 
 DMTERM="alacritty -e"
 
-DMEDITOR="${DMTERM} nvim"
+DMEDITOR="${DMTERM} lvim"
 
 # dm-logout
 logout_locker='slock'
@@ -45,7 +45,6 @@ maim_file_prefix="maim"
 # dm-note
 note_dir="${HOME}/.config/dmscripts/dmnote"
 
-
 # dm-confedit
 confedit_editor="$DMEDITOR"
 declare -A confedit_list
@@ -54,6 +53,7 @@ confedit_list[alacritty]="$HOME/.config/alacritty/alacritty.yml"
 confedit_list[bash]="$HOME/.bashrc"
 confedit_list[i3]="$HOME/.config/i3/config"
 confedit_list[neovim]="$HOME/.config/nvim/init.vim"
+confedit_list[lunarvim]="$HOME/.config/lvim/config.lua"
 confedit_list[picom]="$HOME/.config/picom/picom.conf"
 confedit_list[polybar]="$HOME/.config/polybar/config"
 confedit_list[ssh]="$HOME/.ssh/config"

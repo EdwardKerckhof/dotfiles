@@ -72,7 +72,7 @@ myTerminal :: String
 myTerminal = "alacritty"
 
 myBrowser :: String
-myBrowser = "microsoft-edge-dev"
+myBrowser = "brave"
 
 myMusicPlayer :: String
 myMusicPlayer = "spotify"

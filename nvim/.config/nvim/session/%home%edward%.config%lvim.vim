@@ -8,16 +8,16 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +0 config.lua
+badd +7 config.lua
 argglobal
 %argdel
 edit config.lua
 argglobal
-let s:l = 33 - ((8 * winheight(0) + 21) / 43)
+let s:l = 7 - ((6 * winheight(0) + 21) / 43)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 33
+keepjumps 7
 normal! 0
 lcd ~/.config/lvim
 tabnext 1
@@ -25,7 +25,7 @@ if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=20 shortmess=ifncTFtOolxI
+set winheight=1 winwidth=20 shortmess=ifncIFOTotlx
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

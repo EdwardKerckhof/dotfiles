@@ -1,14 +1,18 @@
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save = true
-lvim.colorscheme = "tokyonight"
+lvim.colorscheme = "onedarker"
+
+vim.opt.wrap = true
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
+lvim.keys.normal_mode["<esc><esc>"] = ":nohlsearch<cr>"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
+lvim.keys.normal_mode["<C-b>"] = ":NvimTreeToggle<cr>"
 lvim.keys.normal_mode["<C-q>"] = ":bd<cr>"
 lvim.keys.normal_mode["<C-o>"] = ":RnvimrToggle<cr>"
-lvim.keys.normal_mode["<C-p>"] = ":Telescope find_files<cr>"
+lvim.keys.normal_mode["<C-p>"] = ":Telescope find_files prompt_prefix=🔍<cr>"
 lvim.keys.normal_mode["<C-f>"] = ":lua require('spectre').open_file_search()<cr>"
 lvim.keys.normal_mode["<TAB>"] = ":bnext<cr>"
 lvim.keys.normal_mode["<S-TAB>"] = ":bprevious<cr>"
@@ -16,6 +20,8 @@ lvim.keys.normal_mode["<C-g>"] = ":Git<cr>"
 lvim.keys.normal_mode["<leader>ga"] = ":Git add .<cr>"
 lvim.keys.normal_mode["<leader>gc"] = ":Git commit<cr>"
 lvim.keys.normal_mode["<leader>gp"] = ":Git push<cr>"
+lvim.keys.normal_mode["<F2>"] = "<cmd>lua require('renamer').rename({empty = true})<cr>"
+lvim.keys.insert_mode["<F2>"] = "<cmd>lua require('renamer').rename({empty = true})<cr>"
 
 -- Change Telescope navigation to use j and k for navigation and n and p for history in both input and normal mode.
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
@@ -183,9 +189,36 @@ linters.setup {
 -- Additional Plugins
 lvim.plugins = {
     {"folke/tokyonight.nvim"},
+  { "lunarvim/colorschemes" },
+  { "arcticicestudio/nord-vim" },
     {
       "folke/trouble.nvim",
       cmd = "TroubleToggle",
+    },
+    {
+      "filipdutescu/renamer.nvim",
+      config = function()
+        require("renamer").setup {
+          -- The popup title, shown if `border` is true
+          title = "Rename",
+          -- The padding around the popup content
+          padding = {
+            top = 0,
+            left = 0,
+            bottom = 0,
+            right = 0,
+          },
+          -- Whether or not to shown a border around the popup
+          border = true,
+          -- The characters which make up the border
+          border_chars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+          -- Whether or not to highlight the current word references through LSP
+          show_refs = true,
+          -- The keymaps available while in the `renamer` buffer. The example below
+          -- overrides the default values, but you can add others as well.
+        }
+      end,
+      branch = "master",
     },
     {
       "rmagatti/goto-preview",
@@ -350,6 +383,7 @@ lvim.plugins = {
         }
     end,
   },
+  { "OmniSharp/omnisharp-vim" }
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)

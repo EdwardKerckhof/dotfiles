@@ -1,0 +1,66 @@
+#!/bin/sh
+alias j='z'
+alias f='zi'
+alias g='lazygit'
+alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
+alias nvimrc='nvim ~/.config/nvim/'
+
+# get fastest mirrors
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+
+# Colorize grep output (good for log files)
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# confirm before overwriting something
+alias cp="cp -i"
+alias mv='mv -i'
+alias rm='rm -i'
+
+# easier to read disk
+alias df='df -h'     # human-readable sizes
+alias free='free -m' # show sizes in MB
+
+# get top process eating memory
+alias psmem='ps auxf | sort -nr -k 4 | head -5'
+
+# get top process eating cpu ##
+alias pscpu='ps auxf | sort -nr -k 3 | head -5'
+
+# gpg encryption
+# verify signature for isos
+alias gpg-check="gpg2 --keyserver-options auto-key-retrieve --verify"
+# receive the key of a developer
+alias gpg-retrieve="gpg2 --keyserver-options auto-key-retrieve --receive-keys"
+
+# For when keys break
+alias archlinx-fix-keys="sudo pacman-key --init && sudo pacman-key --populate archlinux && sudo pacman-key --refresh-keys"
+
+alias doas='doas --'                                        # root privileges
+alias ls='exa -al --color=always --group-directories-first' # my preferred listing
+alias la='exa -a --color=always --group-directories-first'  # all files and dirs
+alias ll='exa -l --color=always --group-directories-first'  # long format
+alias lt='exa -aT --color=always --group-directories-first' # tree listing
+alias yaysyu='yay -Syu --noconfirm'                         # update standard pkgs and AUR pkgs (yay)
+alias cleanup='sudo pacman -Rns (pacman -Qtdq)'             # remove orphaned packages
+
+# dotfiles alias
+alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
+# youtube-dl
+alias yta-aac='youtube-dl --extract-audio --audio-format aac'
+alias yta-best='youtube-dl --extract-audio --audio-format best'
+alias yta-flac='youtube-dl --extract-audio --audio-format flac'
+alias yta-m4a='youtube-dl --extract-audio --audio-format m4a'
+alias yta-mp3='youtube-dl --extract-audio --audio-format mp3'
+alias yta-wav='youtube-dl --extract-audio --audio-format wav'
+alias ytv-best='youtube-dl -f bestvideo+bestaudio'
+
+# lvim
+alias vim='lvim'
+alias vi='lvim'
+alias v='lvim'

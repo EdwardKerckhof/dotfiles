@@ -3,15 +3,18 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 let v:this_session=expand("<sfile>:p")
 silent only
 silent tabonly
-cd /mnt/Development/Projecten3/devops-project-android-k2
+cd /mnt/Development/Projecten3/devops-project-web-k2
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +23 app/src/main/java/com/example/k2_kolveniershof_android/MainActivity.kt
+badd +5 src/Client/Components/Blobs.razor.css
+badd +3 /mnt/Development/Projecten3/devops-project-web-k2/src/Client/Components/Profile.razor.css
+badd +24 /mnt/Development/Projecten3/devops-project-web-k2/src/Client/Components/ScheduleCard.razor.cs
+badd +0 /mnt/Development/Projecten3/devops-project-web-k2/src/Client/Program.cs
 argglobal
 %argdel
-edit app/src/main/java/com/example/k2_kolveniershof_android/MainActivity.kt
+edit /mnt/Development/Projecten3/devops-project-web-k2/src/Client/Program.cs
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -25,12 +28,13 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-let s:l = 23 - ((22 * winheight(0) + 23) / 46)
+balt /mnt/Development/Projecten3/devops-project-web-k2/src/Client/Components/ScheduleCard.razor.cs
+let s:l = 33 - ((21 * winheight(0) + 21) / 43)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 23
-normal! 0
+keepjumps 33
+normal! 071|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
