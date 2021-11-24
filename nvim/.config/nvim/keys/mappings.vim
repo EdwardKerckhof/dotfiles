@@ -73,7 +73,7 @@ vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Find files using Telescope command-line sugar.
-nnoremap <C-p> :Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<CR>
+"nnoremap <C-p> :Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<CR>
 nnoremap <C-o>ranger<CR>
 
 " Git integration

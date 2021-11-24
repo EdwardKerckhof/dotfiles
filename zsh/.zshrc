@@ -22,6 +22,7 @@ plugins=(git
          zsh-syntax-highlighting
          zsh-nvm
          zsh-yarn-completions
+         vi-mode
          git-flow-completion)
 
 # Sourcing oh-my-zsh
@@ -60,10 +61,10 @@ alias mirror='sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacma
 alias mirrord='sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist'
 alias mirrors='sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist'
 alias mirrora='sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist'
-# nvim
-alias vim='nvim'
-alias vi='nvim'
-alias v='nvim'
+# lvim
+alias vim='lvim'
+alias vi='lvim'
+alias v='lvim'
 
 ### KEY BINDINGS ###
 bindkey -s '^o' 'ranger^M'
@@ -79,5 +80,8 @@ colorscript random
 # Environment variables set everywhere
 export EDITOR='code'
 export TERMINAL='alacritty'
-export BROWSER='brave'
+export BROWSER='microsoft-edge-dev'
 export PATH=/home/edward/Android/Sdk/platform-tools:$PATH
+
+# Enable vi mode
+bindkey -v

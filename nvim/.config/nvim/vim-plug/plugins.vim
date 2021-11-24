@@ -17,7 +17,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   " NERDTree devicons
   Plug 'ryanoasis/vim-devicons'
   " Fuzzy find files
-  "Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'ctrlpvim/ctrlp.vim'
   " Commenter
   Plug 'scrooloose/nerdcommenter'
   " Gutter
@@ -50,4 +50,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'mhinz/vim-grepper'
   " Markdown preview
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+  Plug 'neovim/nvim-lspconfig' " Native LSP support
+  Plug 'hrsh7th/nvim-cmp' " Autocompletion framework
+  Plug 'hrsh7th/cmp-nvim-lsp' " LSP autocompletion provider
 call plug#end()

@@ -9,7 +9,7 @@
 
 DMENU="dmenu -i -l 20 -p"
 
-DMBROWSER="brave"
+DMBROWSER="microsoft-edge-dev"
 
 DMTERM="alacritty -e"
 
@@ -25,7 +25,7 @@ case "${0##*-}" in
   *);;
 esac
 
-# dm-bookman 
+# dm-bookman
 bookman_show_source=1
 
 # dm-sounds
@@ -36,7 +36,7 @@ setbg_dir="${HOME}/Pictures/Wallpapers"
 
 # Set this to 1 if you want to use imv and wayland, 0 if you want to use sxiv
 # Note that sxiv is X11 only, you need to mark the image you want to use.
-use_imv=1 
+use_imv=1
 
 # dm-maim
 maim_dir="${HOME}/Screenshots"
@@ -81,7 +81,7 @@ declare -a reddit_list=(
 "r/vim"
 )
 
-# Search engine config 
+# Search engine config
 websearch_browser="$DMBROWSER"
 declare -A websearch
 # Syntax:

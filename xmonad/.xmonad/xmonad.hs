@@ -72,14 +72,14 @@ myTerminal :: String
 myTerminal = "alacritty"
 
 myBrowser :: String
-myBrowser = "brave"
+myBrowser = "microsoft-edge-dev"
 
 myMusicPlayer :: String
 myMusicPlayer = "spotify"
 
 myEditor :: String
---myEditor = myTerminal ++ " -e nvim"
-myEditor = "code"
+myEditor = myTerminal ++ " -e lvim"
+--myEditor = "code"
 
 myFileManager :: String
 myFileManager = "pcmanfm"
