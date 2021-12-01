@@ -1,7 +1,6 @@
 [user]
 	email = edward@zonedev.be
 	name = Edward Kerckhof
-	signingkey = 3DEA8F39B22C88B4
 [core]
 	editor = lvim
 [gpg]
