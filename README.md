@@ -7,7 +7,7 @@ Managed using GNU Stow.
 1. Clone this repo:
 
    ```shell
-   git clone --recursive https://github.com/woefe/dotfiles.git $HOME/.dotfiles-edward
+   git clone --recursive https://github.com/EdwardKerckhof/dotfiles.git $HOME/.dotfiles-edward
    cd $HOME/.dotfiles-edward
    ```
 
