@@ -1,9 +1,9 @@
 [user]
 	email = edward@zonedev.be
-	name = Edward Kerckhof
+	name = EdwardKerckhof
 	signingkey = C2CFEE9553A3167E
 [core]
-	editor = lvim
+	editor = nvim
 [gpg]
 	program = gpg2
 [commit]
@@ -17,3 +17,5 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[credential]
+	helper = cache
