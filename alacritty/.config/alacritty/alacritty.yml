@@ -37,3 +37,6 @@ selection:
   save_to_clipboard: true
 
 live_config_reload: true
+
+env:
+  TERM: xterm-256color

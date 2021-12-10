@@ -49,7 +49,7 @@ alias ls='exa -al --color=always --group-directories-first' # my preferred listi
 alias la='exa -a --color=always --group-directories-first'  # all files and dirs
 alias ll='exa -l --color=always --group-directories-first'  # long format
 alias lt='exa -aT --color=always --group-directories-first' # tree listing
-alias yaysyu='yay -Syu --noconfirm'                         # update standard pkgs and AUR pkgs (yay)
+alias update='paru -Sua'                                    # update standard pkgs and AUR pkgs (paru)
 alias cleanup='sudo pacman -Rns (pacman -Qtdq)'             # remove orphaned packages
 
 # dotfiles alias
@@ -64,7 +64,14 @@ alias yta-mp3='youtube-dl --extract-audio --audio-format mp3'
 alias yta-wav='youtube-dl --extract-audio --audio-format wav'
 alias ytv-best='youtube-dl -f bestvideo+bestaudio'
 
-# lvim
-alias vim='lvim'
-alias vi='lvim'
-alias v='lvim'
+# nvim
+alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'
+
+# yay / pacman
+alias yay='paru'
+alias pacman='paru'
+
+# fnm /nvm
+alias nvm='fnm'

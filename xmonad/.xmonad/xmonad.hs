@@ -1,69 +1,81 @@
 ------------------------------------------------------------------------
--- Data
-import Data.Char
-import qualified Data.Map as M
-import Data.Maybe
-import Data.Monoid
-import Data.Tree
-import System.Directory
-import System.Exit
-import System.IO
+-- Imports
+-- Base
 import XMonad
-import XMonad.Actions.CopyWindow
-import XMonad.Actions.CycleWS
+import System.Directory
+import System.IO (hPutStrLn)
+import System.Exit (exitSuccess)
+import qualified XMonad.StackSet as W
+
+-- Actions
+import XMonad.Actions.CopyWindow (kill1)
+import XMonad.Actions.CycleWS (Direction1D(..), moveTo, shiftTo, WSType(..), nextScreen, prevScreen)
 import XMonad.Actions.GridSelect
 import XMonad.Actions.MouseResize
 import XMonad.Actions.Promote
-import XMonad.Actions.RotSlaves
+import XMonad.Actions.RotSlaves (rotSlavesDown, rotAllDown)
+import XMonad.Actions.WindowGo (runOrRaise)
+import XMonad.Actions.WithAll (sinkAll, killAll)
 import qualified XMonad.Actions.Search as S
-import XMonad.Actions.WindowGo
-import XMonad.Actions.WithAll
+
+-- Data
+import Data.Char (isSpace, toUpper)
+import Data.Maybe (fromJust)
+import Data.Monoid
+import Data.Maybe (isJust)
+import Data.Tree
+import qualified Data.Map as M
+
 -- Hooks
-import XMonad.Hooks.DynamicLog
-import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks
-import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
+import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcomposite in obs.
+import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
+import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat, doCenterFloat)
 import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.WorkspaceHistory
+
 -- Layouts
 import XMonad.Layout.Accordion
-import XMonad.Layout.GridVariants
--- Layouts modifiers
-import XMonad.Layout.LayoutModifier
-import XMonad.Layout.LimitWindows
-import XMonad.Layout.Magnifier
-import XMonad.Layout.MultiToggle
-import qualified XMonad.Layout.MultiToggle as MT
-import XMonad.Layout.MultiToggle.Instances
-import XMonad.Layout.NoBorders
-import XMonad.Layout.Renamed
-import XMonad.Layout.ResizableTile
-import XMonad.Layout.ShowWName
-import XMonad.Layout.Simplest
+import XMonad.Layout.GridVariants (Grid(Grid))
 import XMonad.Layout.SimplestFloat
-import XMonad.Layout.Spacing
 import XMonad.Layout.Spiral
-import XMonad.Layout.SubLayouts
+import XMonad.Layout.ResizableTile
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
-import qualified XMonad.Layout.ToggleLayouts as T
-import XMonad.Layout.WindowArranger
+
+-- Layouts modifiers
+import XMonad.Layout.LayoutModifier
+import XMonad.Layout.LimitWindows (limitWindows, increaseLimit, decreaseLimit)
+import XMonad.Layout.Magnifier
+import XMonad.Layout.MultiToggle (mkToggle, single, EOT(EOT), (??))
+import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, MIRROR, NOBORDERS))
+import XMonad.Layout.NoBorders
+import XMonad.Layout.Renamed
+import XMonad.Layout.ShowWName
+import XMonad.Layout.Simplest
+import XMonad.Layout.Spacing
+import XMonad.Layout.SubLayouts
+import XMonad.Layout.WindowArranger (windowArrange, WindowArrangerMsg(..))
 import XMonad.Layout.WindowNavigation
-import qualified XMonad.StackSet as W
+import qualified XMonad.Layout.ToggleLayouts as T (toggleLayouts, ToggleLayout(Toggle))
+import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
+
 -- Utilities
-import XMonad.Config.Azerty
 import XMonad.Util.Dmenu
-import XMonad.Util.EZConfig
 import XMonad.Util.NamedScratchpad
-import XMonad.Util.Run
+import XMonad.Util.EZConfig (additionalKeysP)
+import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
+
+-- Config
+import XMonad.Config.Azerty
 
 ------------------------------------------------------------------------
 -- Variables
 
 myFont :: String
-myFont = "xft:Fira Code:regular:size=10:antialias=true:hinting=true"
+myFont = "xft:Fira Code:regular:size=11:antialias=true:hinting=true"
 
 myModMask :: KeyMask
 myModMask = mod4Mask
@@ -78,17 +90,17 @@ myMusicPlayer :: String
 myMusicPlayer = "spotify"
 
 myEditor :: String
-myEditor = myTerminal ++ " -e lvim"
+myEditor = myTerminal ++ " -e nvim"
 --myEditor = "code"
 
 myFileManager :: String
-myFileManager = "pcmanfm"
+myFileManager = "thunar"
 
 mySocialApp :: String
 mySocialApp = "discord"
 
 myMailApp :: String
-myMailApp = "thunderbird"
+myMailApp = "mailspring"
 
 myBorderWidth :: Dimension
 myBorderWidth = 2
@@ -107,6 +119,24 @@ myFocusFollowsMouse = False
 
 myClickJustFocuses :: Bool
 myClickJustFocuses = False
+
+------------------------------------------------------------------------
+-- Startup hook
+
+myStartupHook :: X ()
+myStartupHook = do
+  spawn "killall conky"
+  spawn "killall trayer"
+
+  spawnOnce "lxsession"
+  spawnOnce "picom"
+  spawnOnce "nm-applet"
+  spawnOnce "volumeicon"
+  spawnOnce "blueman-adapters &"
+  spawn ("sleep 2 && conky -c $HOME/.config/conky/xmonad.conkyrc")
+  spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22")
+  spawnOnce "nitrogen --restore"
+  setWMName "LG3D"
 
 ------------------------------------------------------------------------
 -- Scratchpads
@@ -138,13 +168,11 @@ myScratchPads =
 -- Layouts
 
 -- Makes setting the spacingRaw simpler to write. The spacingRaw module adds a configurable amount of space around windows.
-
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 
 -- Below is a variation of the above except no borders are applied
 -- if fewer than two windows. So a single window has no gaps.
-
 mySpacing' :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
 
@@ -213,7 +241,11 @@ myLayoutHook =
 -- Workspaces
 
 myWorkspaces :: [String]
-myWorkspaces = [" www ", " dev ", " chat ", " mus ", " mail ", " web ", " game ", " sys ", " vid "]
+myWorkspaces = [" www ", " dev ", " chat ", " mus ", " mail ", " web ", " game ", " sys ", " note "]
+myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
+
+clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
+    where i = fromJust $ M.lookup ws myWorkspaceIndices
 
 ------------------------------------------------------------------------
 -- Window rules
@@ -237,7 +269,6 @@ myManageHook =
      , className =? "toolbar"                       --> doFloat
      , title =? "Oracle VM VirtualBox Manager"      --> doFloat
      , className =? "firefox"                       --> doShift ( myWorkspaces !! 0 )
-     , className =? "qute"                   --> doShift ( myWorkspaces !! 0 )
      , className =? "Chromium"                      --> doShift ( myWorkspaces !! 0 )
      , className =? "Firefox Developer Edition"     --> doShift ( myWorkspaces !! 0 )
      , className =? "Brave-browser"                 --> doShift ( myWorkspaces !! 0 )
@@ -248,25 +279,11 @@ myManageHook =
      , className =? "GitHub Desktop"                --> doShift ( myWorkspaces !! 1 )
      , className =? "discord"                       --> doShift ( myWorkspaces !! 2 )
      , title =? "Messenger call - Brave"            --> doShift ( myWorkspaces !! 2 )
-     , className =? "Thunderbird" --> doShift (myWorkspaces !! 4)
+     , className =? "Mailspring"                    --> doShift (myWorkspaces !! 4)
      , isFullscreen --> doFullFloat
     ]
     <+> namedScratchpadManageHook myScratchPads
 
-------------------------------------------------------------------------
--- Startup hook
-
-myStartupHook :: X ()
-myStartupHook = do
-  spawnOnce "compton &"
-  spawnOnce "nm-applet &"
-  spawnOnce "volumeicon &"
-  spawnOnce "nitrogen --restore &"
-  spawnOnce "conky -c /home/edward/.config/conky/xmonad.conkyrc"
-  spawnOnce "blueman-adapters &"
-  spawnOnce "xrandr --output DP-2 --mode 1920x1080 --rate 144  --output HDMI-0 --mode 1920x1080 --rate 60 --left-of DP-2 &"
-  spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
-  setWMName "LG3D"
 
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -291,7 +308,7 @@ myKeys =
     ("M-v", spawn "virt-manager"),
     ("M-r", spawn "runelite"),
     ("M-i", spawn (myTerminal ++ " -e ~/dotfiles/cht.sh")),
-    ("M-S-s", spawn "~/bash_scripts/dm-scrot.sh"),
+    ("M-S-s", spawn "spectacle -rbc"),
     ("M-S-c", spawn "dm-confedit"),
     ("M-S-h", spawn "dm-hub"),
     ("M-S-k", spawn "dm-kill"),
@@ -387,9 +404,9 @@ main = do
                       hPutStrLn xmproc0 x -- xmobar on monitor 1
                         >> hPutStrLn xmproc1 x, -- xmobar on monitor 2
                     ppCurrent = xmobarColor "#c792ea" "" . wrap "<box type=Bottom width=2 mb=2 color=#c792ea>" "</box>", -- Current workspace
-                    ppVisible = xmobarColor "#c792ea" "", -- Visible but not current workspace
-                    ppHidden = xmobarColor "#82AAFF" "" . wrap "<box type=Top width=2 mt=2 color=#82AAFF>" "</box>", -- Hidden workspaces
-                    ppHiddenNoWindows = xmobarColor "#82AAFF" "", -- Hidden workspaces (no windows)
+                    ppVisible = xmobarColor "#c792ea" "" . clickable, -- Visible but not current workspace
+                    ppHidden = xmobarColor "#82AAFF" "" . wrap "<box type=Top width=2 mt=2 color=#82AAFF>" "</box>" . clickable, -- Hidden workspaces
+                    ppHiddenNoWindows = xmobarColor "#82AAFF" "" . clickable, -- Hidden workspaces (no windows)
                     ppTitle = xmobarColor "#b3afc2" "" . shorten 60, -- Title of active window
                     ppSep = "<fc=#666666> <fn=1>|</fn> </fc>", -- Separator character
                     ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!", -- Urgent workspace

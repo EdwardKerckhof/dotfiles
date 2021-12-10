@@ -13,7 +13,7 @@ DMBROWSER="brave"
 
 DMTERM="alacritty -e"
 
-DMEDITOR="${DMTERM} lvim"
+DMEDITOR="${DMTERM} nvim"
 
 # dm-logout
 logout_locker='slock'

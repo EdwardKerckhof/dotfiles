@@ -1,9 +1,11 @@
 Config {
-  font = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:hinting=true",
+  font = "xft::weight=bold:pixelsize=10:antialias=true:hinting=true",
   additionalFonts = [
     "xft:Fira Code:pixelsize=12:antialias=true:hinting=true",
     "xft:Font Awesome 5 Free Solid:pixelsize=12",
-    "xft:Font Awesome 5 Brands:pixelsize=12"
+    "xft:Font Awesome 5 Brands:pixelsize=12",
+    "xft:Noto Color Emoji:pixelsize=12",
+    "xtf:Symbols Nerd Font:pixelsize=12"
   ],
   bgColor = "#282c34"
   fgColor = "#ff6c6b",
@@ -23,7 +25,7 @@ Config {
     -- Ram used number and percent
     Run Memory ["-t", "<fn=2>\xf233</fn>  <used>M (<usedratio>%)"] 20,
     -- Disk space free
-    Run DiskU [("/", "<fn=2>\xf0c7</fn>  <free> free")] [] 60,
+    Run DiskU [("/home", "<fn=2>\xf0c7</fn>  <free> free")] [] 60,
     -- Runs custom script to check for pacman updates.
     Run Com "/home/edward/.config/xmobar/pacupdate.sh" [] "pacupdate" 36000,
     -- Runs a standard shell command 'uname -r' to get kernel version

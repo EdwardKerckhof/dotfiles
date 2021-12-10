@@ -63,6 +63,10 @@ colorscript random
 # export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
 compinit
 
-export EDITOR='lvim'
+export EDITOR='nvim'
 export TERMINAL='alacritty'
 export BROWSER='brave'
+
+# fnm
+export PATH=/home/edward/.fnm:$PATH
+eval "`fnm env`"
