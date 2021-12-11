@@ -19,3 +19,5 @@
 	smudge = git-lfs smudge -- %f
 [credential]
 	helper = cache
+[github]
+	user = EdwardKerckhof

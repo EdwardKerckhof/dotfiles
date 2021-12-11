@@ -5,7 +5,8 @@ Config {
     "xft:Font Awesome 5 Free Solid:pixelsize=12",
     "xft:Font Awesome 5 Brands:pixelsize=12",
     "xft:Noto Color Emoji:pixelsize=12",
-    "xtf:Symbols Nerd Font:pixelsize=12"
+    "xtf:Symbols Nerd Font:pixelsize=12",
+    "xtf:Twemoji:pixelsize=12"
   ],
   bgColor = "#282c34",
   fgColor = "#ff6c6b",

@@ -63,7 +63,7 @@ confedit_list[xmobar mon1]="$HOME/.config/xmobar/xmobarrc0"
 confedit_list[xmobar mon2]="$HOME/.config/xmobar/xmobarrc1"
 confedit_list[xinitrc]="$HOME/.xinitrc"
 confedit_list[xresources]="$HOME/.Xresources"
-confedit_list[zsh]="$HOME/.zshrc"
+confedit_list[zsh]="$HOME/.config/zsh/.zshrc"
 
 # dm-reddit config
 declare -a reddit_list=(

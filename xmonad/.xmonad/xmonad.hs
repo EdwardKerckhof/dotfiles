@@ -75,7 +75,7 @@ import XMonad.Config.Azerty
 -- Variables
 
 myFont :: String
-myFont = "xft:Fira Code:regular:size=11:antialias=true:hinting=true"
+myFont = "xft:SauceCodePro Nerd Font Mono:regular:size=11:antialias=true:hinting=true"
 
 myModMask :: KeyMask
 myModMask = mod4Mask
@@ -102,6 +102,9 @@ mySocialApp = "discord"
 myMailApp :: String
 myMailApp = "mailspring"
 
+myNoteTakingApp :: String
+myNoteTakingApp = "obsidian"
+
 myBorderWidth :: Dimension
 myBorderWidth = 2
 
@@ -125,7 +128,7 @@ myClickJustFocuses = False
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawn "killall conky"
+  -- spawn "killall conky"
   spawn "killall trayer"
 
   spawnOnce "lxsession"
@@ -133,7 +136,7 @@ myStartupHook = do
   spawnOnce "nm-applet"
   spawnOnce "volumeicon"
   spawnOnce "blueman-adapters &"
-  spawn ("sleep 2 && conky -c $HOME/.config/conky/xmonad.conkyrc")
+  -- spawn ("sleep 2 && conky -c $HOME/.config/conky/xmonad.conkyrc")
   spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22")
   spawnOnce "nitrogen --restore"
   setWMName "LG3D"
@@ -279,7 +282,8 @@ myManageHook =
      , className =? "GitHub Desktop"                --> doShift ( myWorkspaces !! 1 )
      , className =? "discord"                       --> doShift ( myWorkspaces !! 2 )
      , title =? "Messenger call - Brave"            --> doShift ( myWorkspaces !! 2 )
-     , className =? "Mailspring"                    --> doShift (myWorkspaces !! 4)
+     , className =? "Mailspring"                    --> doShift ( myWorkspaces !! 4 )
+     , className =? "obsidian"                      --> doShift ( myWorkspaces !! 8 )
      , isFullscreen --> doFullFloat
     ]
     <+> namedScratchpadManageHook myScratchPads
@@ -304,13 +308,14 @@ myKeys =
     ("M-c", spawn (myEditor)),
     ("M-d", spawn (mySocialApp)),
     ("M-e", spawn (myMailApp)),
+    ("M-n", spawn (myNoteTakingApp)),
     ("M-f", spawn (myFileManager)),
     ("M-v", spawn "virt-manager"),
     ("M-r", spawn "runelite"),
     ("M-i", spawn (myTerminal ++ " -e ~/dotfiles/cht.sh")),
     ("M-S-s", spawn "spectacle -rbc"),
     ("M-S-c", spawn "dm-confedit"),
-    ("M-S-h", spawn "dm-hub"),
+    ("M-S-a", spawn "dm-hub"),
     ("M-S-k", spawn "dm-kill"),
     ("M-<Delete>", spawn "dm-logout"),
     -- KB_GROUP Kill windows
@@ -329,7 +334,7 @@ myKeys =
     ("M-p", windows W.focusMaster), -- Move focus to the master window
     ("M-l", windows W.focusDown), -- Move focus to the next window
     ("M-h", windows W.focusUp), -- Move focus to the prev window
-    ("M-S-m", windows W.swapMaster), -- Swap the focused window and the master window
+    ("M-S-h", windows W.swapMaster), -- Swap the focused window and the master window
     ("M-S-l", windows W.swapDown), -- Swap focused window with next window
     ("M-<Backspace>", promote), -- Moves focused window to master, others maintain order
     ("M-S-<Tab>", rotSlavesDown), -- Rotate all windows except master and keep focus in place
@@ -343,10 +348,10 @@ myKeys =
     ("M-m", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts), -- Toggles noborder/full
 
     -- KB_GROUP Window resizing
-    ("M-C-h", sendMessage Shrink),
-    ("M-C-l", sendMessage Expand),
-    ("M-C-k", sendMessage MirrorShrink),
-    ("M-C-k", sendMessage MirrorExpand),
+    ("M1-S-h", sendMessage Shrink),
+    ("M1-S-l", sendMessage Expand),
+    ("M1-S-k", sendMessage MirrorShrink),
+    ("M1-S-k", sendMessage MirrorExpand),
     -- KB_GROUP Scratchpads
     ("M-p t", namedScratchpadAction myScratchPads "terminal"),
     ("M-p c", namedScratchpadAction myScratchPads "calculator"),
