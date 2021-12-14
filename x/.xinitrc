@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # ~/.xinitrc
 #
@@ -62,10 +62,12 @@ get_session(){
 	echo "dbus-launch ${dbus_args[*]}"
 }
 
-exec $(get_session "$1")
-
 xrandr --setupprovideroutputsource modesetting NVIDIA-0 xrandr --auto
 xrandr --auto
 xrandr --output DP-2 --mode 1920x1080 --rate 144  --output HDMI-0 --mode 1920x1080 --rate 60 --left-of DP-2
 xinput set-props 8 292 1
 xinput set-button-map 8 1 2 3 5 4 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+
+numlock & 
+
+exec $(get_session "$1")

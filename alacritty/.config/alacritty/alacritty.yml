@@ -18,7 +18,7 @@ window:
     x: 10
     y: 10
 
-background_opacity: 1
+background_opacity: 0.8
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.

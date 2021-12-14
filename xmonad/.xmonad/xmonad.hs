@@ -75,7 +75,7 @@ import XMonad.Config.Azerty
 -- Variables
 
 myFont :: String
-myFont = "xft:SauceCodePro Nerd Font Mono:regular:size=11:antialias=true:hinting=true"
+myFont = "xft:mononoki:regular:size=11:antialias=true:hinting=true"
 
 myModMask :: KeyMask
 myModMask = mod4Mask
@@ -109,7 +109,7 @@ myBorderWidth :: Dimension
 myBorderWidth = 2
 
 myNormalBorderColor :: String
-myNormalBorderColor = "#282c34"
+myNormalBorderColor = "#1a1b26"
 
 myFocusedBorderColor :: String
 myFocusedBorderColor = "#46d9ff"
@@ -135,9 +135,9 @@ myStartupHook = do
   spawnOnce "picom"
   spawnOnce "nm-applet"
   spawnOnce "volumeicon"
-  spawnOnce "blueman-adapters &"
+  spawnOnce "blueman-adapters"
   -- spawn ("sleep 2 && conky -c $HOME/.config/conky/xmonad.conkyrc")
-  spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22")
+  spawn ("sleep 2 && trayer --edge top --align right --distance 11 --margin 22 --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x1a1b26  --height 22")
   spawnOnce "nitrogen --restore"
   setWMName "LG3D"
 
@@ -212,8 +212,8 @@ myTabTheme =
       activeColor = "#46d9ff",
       inactiveColor = "#313846",
       activeBorderColor = "#46d9ff",
-      inactiveBorderColor = "#282c34",
-      activeTextColor = "#282c34",
+      inactiveBorderColor = "#1a1b26",
+      activeTextColor = "#1a1b26",
       inactiveTextColor = "#d0d0d0"
     }
 
@@ -284,6 +284,7 @@ myManageHook =
      , title =? "Messenger call - Brave"            --> doShift ( myWorkspaces !! 2 )
      , className =? "Mailspring"                    --> doShift ( myWorkspaces !! 4 )
      , className =? "obsidian"                      --> doShift ( myWorkspaces !! 8 )
+     , className =? "Virt-manager"                  --> doShift ( myWorkspaces !! 7 )
      , isFullscreen --> doFullFloat
     ]
     <+> namedScratchpadManageHook myScratchPads
@@ -408,9 +409,9 @@ main = do
                     ppOutput = \x ->
                       hPutStrLn xmproc0 x -- xmobar on monitor 1
                         >> hPutStrLn xmproc1 x, -- xmobar on monitor 2
-                    ppCurrent = xmobarColor "#c792ea" "" . wrap "<box type=Bottom width=2 mb=2 color=#c792ea>" "</box>", -- Current workspace
+                    ppCurrent = xmobarColor "#c792ea" "" . wrap "[" "]", -- Current workspace
                     ppVisible = xmobarColor "#c792ea" "" . clickable, -- Visible but not current workspace
-                    ppHidden = xmobarColor "#82AAFF" "" . wrap "<box type=Top width=2 mt=2 color=#82AAFF>" "</box>" . clickable, -- Hidden workspaces
+                    ppHidden = xmobarColor "#82AAFF" "" . clickable, -- Hidden workspaces
                     ppHiddenNoWindows = xmobarColor "#82AAFF" "" . clickable, -- Hidden workspaces (no windows)
                     ppTitle = xmobarColor "#b3afc2" "" . shorten 60, -- Title of active window
                     ppSep = "<fc=#666666> <fn=1>|</fn> </fc>", -- Separator character

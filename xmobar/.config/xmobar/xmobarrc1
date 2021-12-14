@@ -7,14 +7,14 @@ Config {
     "xft:Noto Color Emoji:pixelsize=12",
     "xtf:Symbols Nerd Font:pixelsize=12"
   ],
-  bgColor = "#282c34",
+  bgColor = "#1a1b26",
   fgColor = "#ff6c6b",
-  position = Static { xpos = 0 , ypos = 0, width = 1920, height = 24 },
+  position = Static { xpos = 20 , ypos = 10, width = 1880, height = 24 },
   lowerOnStart = True,
   hideOnStart = False,
   allDesktops = True,
   persistent = True,
-  iconRoot = ".",
+  iconRoot = ".xmonad/xpm/",
   overrideRedirect = True,
   commands = [
     -- Time and date
@@ -24,5 +24,5 @@ Config {
   ],
   sepChar = "%",
   alignSep = "}{",
-  template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=2 color=#98be65><fc=#98be65><fn=3></fn> %spotify%</fc></box>  <fc=#666666>|</fc>  <box type=Bottom width=2 mb=2 color=#46d9ff><fc=#46d9ff><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action></fc></box>"
+  template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{ <fc=#98be65><fn=3></fn> %spotify%</fc>  <fc=#666666>|</fc>  <fc=#46d9ff><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action></fc>"
 }

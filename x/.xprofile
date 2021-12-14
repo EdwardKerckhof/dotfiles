@@ -1,4 +1,6 @@
 # Monitor config
+xrandr --setupprovideroutputsource modesetting NVIDIA-0 xrandr --auto
+xrandr --auto
 xrandr --output DP-2 --mode 1920x1080 --rate 144  --output HDMI-0 --mode 1920x1080 --rate 60 --left-of DP-2
 
 # Don't Randomly Turn off
