@@ -10,7 +10,7 @@ Config {
   ],
   bgColor = "#1a1b26",
   fgColor = "#ff6c6b",
-  position = Static { xpos = 1940 , ypos = 10, width = 1880, height = 24 },
+  position = Static { xpos = 1920 , ypos = 0, width = 1920, height = 24 },
   lowerOnStart = True,
   hideOnStart = False,
   allDesktops = True,

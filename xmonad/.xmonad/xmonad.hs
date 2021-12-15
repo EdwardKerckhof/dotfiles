@@ -136,8 +136,9 @@ myStartupHook = do
   spawnOnce "nm-applet"
   spawnOnce "volumeicon"
   spawnOnce "blueman-adapters"
+  spawnOnce "dunst"
   -- spawn ("sleep 2 && conky -c $HOME/.config/conky/xmonad.conkyrc")
-  spawn ("sleep 2 && trayer --edge top --align right --distance 11 --margin 22 --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x1a1b26  --height 22")
+  spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x1a1b26  --height 22")
   spawnOnce "nitrogen --restore"
   setWMName "LG3D"
 
@@ -306,7 +307,7 @@ myKeys =
     ("M-t", spawn (myTerminal)),
     ("M-b", spawn (myBrowser)),
     ("M-s", spawn (myMusicPlayer)),
-    ("M-c", spawn (myEditor)),
+    ("M-c", spawn "code"),
     ("M-d", spawn (mySocialApp)),
     ("M-e", spawn (myMailApp)),
     ("M-n", spawn (myNoteTakingApp)),
