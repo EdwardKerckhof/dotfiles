@@ -1,5 +1,5 @@
 Config {
-  font = "xft::weight=bold:pixelsize=10:antialias=true:hinting=true",
+  font = "xft:FuraCode:weight=bold:pixelsize=10:antialias=true:hinting=true",
   additionalFonts = [
     "xft:Fira Code:pixelsize=12:antialias=true:hinting=true",
     "xft:Font Awesome 5 Free Solid:pixelsize=12",
@@ -9,7 +9,7 @@ Config {
   ],
   bgColor = "#1a1b26",
   fgColor = "#ff6c6b",
-  position = Static { xpos = 20 , ypos = 10, width = 1880, height = 24 },
+  position = Static { xpos = 0, ypos = 0, width = 1920, height = 24 },
   lowerOnStart = True,
   hideOnStart = False,
   allDesktops = True,

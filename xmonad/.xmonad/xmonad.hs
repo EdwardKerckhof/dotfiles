@@ -90,7 +90,7 @@ myMusicPlayer :: String
 myMusicPlayer = "spotify"
 
 myEditor :: String
-myEditor = myTerminal ++ " -e nvim"
+myEditor = myTerminal ++ " -e tmux new -A -s code"
 --myEditor = "code"
 
 myFileManager :: String
@@ -307,7 +307,7 @@ myKeys =
     ("M-t", spawn (myTerminal)),
     ("M-b", spawn (myBrowser)),
     ("M-s", spawn (myMusicPlayer)),
-    ("M-c", spawn "code"),
+    ("M-c", spawn (myEditor)),
     ("M-d", spawn (mySocialApp)),
     ("M-e", spawn (myMailApp)),
     ("M-n", spawn (myNoteTakingApp)),
@@ -317,7 +317,8 @@ myKeys =
     ("M-i", spawn (myTerminal ++ " -e ~/dotfiles/cht.sh")),
     ("M-S-s", spawn "~/.local/bin/screenshot"),
     ("M1-<Space>", spawn "dunstctl history-pop"),
-    ("M-S-c", spawn "dm-confedit"),
+    ("M-S-e", spawn "dm-confedit"),
+    ("M-S-c", spawn ("colorpicker --short --one-shot | xclip -selection clipboard")),
     ("M-S-a", spawn "dm-hub"),
     ("M-S-k", spawn "dm-kill"),
     ("M-<Delete>", spawn "dm-logout"),
