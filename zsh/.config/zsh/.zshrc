@@ -64,7 +64,7 @@ colorscript random
 compinit
 
 export EDITOR='nvim'
-export TERMINAL='alacritty'
+export TERMINAL='kitty'
 export BROWSER='brave'
 
 # fnm

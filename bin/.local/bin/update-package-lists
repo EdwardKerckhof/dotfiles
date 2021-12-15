@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd ~/dotfiles/
+pacman -Qqen > arch-packages.txt
+pacman -Qqem > aur-packages.txt

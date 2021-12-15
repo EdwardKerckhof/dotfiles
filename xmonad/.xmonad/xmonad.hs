@@ -75,13 +75,13 @@ import XMonad.Config.Azerty
 -- Variables
 
 myFont :: String
-myFont = "xft:mononoki:regular:size=11:antialias=true:hinting=true"
+myFont = "xft:JetBrainsMono Nerd Font:regular:size=11:antialias=true:hinting=true"
 
 myModMask :: KeyMask
 myModMask = mod4Mask
 
 myTerminal :: String
-myTerminal = "alacritty"
+myTerminal = "kitty"
 
 myBrowser :: String
 myBrowser = "brave"

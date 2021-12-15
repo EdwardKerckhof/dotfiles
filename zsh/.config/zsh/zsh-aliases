@@ -69,10 +69,8 @@ alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 
-
 # yay / pacman
 alias yay='paru'
-alias pacman='paru'
 
 # fnm /nvm
 alias nvm='fnm'

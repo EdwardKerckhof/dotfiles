@@ -11,7 +11,7 @@ DMENU="dmenu -i -l 20 -p"
 
 DMBROWSER="brave"
 
-DMTERM="alacritty -e"
+DMTERM="kitty -e"
 
 DMEDITOR="${DMTERM} nvim"
 
@@ -67,6 +67,7 @@ confedit_list[xresources]="$HOME/.Xresources"
 confedit_list[zsh]="$HOME/.config/zsh/.zshrc"
 confedit_list[zsh-exports]="$HOME/.config/zsh/zsh-exports"
 confedit_list[zsh-aliases]="$HOME/.config/zsh/zsh-aliases"
+confedit_list[zsh-prompt]="$HOME/.config/zsh/zsh-prompt"
 
 # dm-reddit config
 declare -a reddit_list=(
