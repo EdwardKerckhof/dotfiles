@@ -262,7 +262,7 @@ myManageHook =
     -- I'm doing it this way because otherwise I would have to write out the full
     -- name of my workspaces and the names would be very long if using clickable workspaces.
     [
-      className =? "confirm"                       --> doFloat
+      className =? "confirm"                        --> doFloat
      , className =? "file_progress"                 --> doFloat
      , className =? "dialog"                        --> doFloat
      , className =? "download"                      --> doFloat
@@ -284,8 +284,8 @@ myManageHook =
      , className =? "discord"                       --> doShift ( myWorkspaces !! 2 )
      , title =? "Messenger call - Brave"            --> doShift ( myWorkspaces !! 2 )
      , className =? "Mailspring"                    --> doShift ( myWorkspaces !! 4 )
-     , className =? "obsidian"                      --> doShift ( myWorkspaces !! 8 )
      , className =? "Virt-manager"                  --> doShift ( myWorkspaces !! 7 )
+     , className =? "obsidian"                      --> doShift ( myWorkspaces !! 8 )
      , isFullscreen --> doFullFloat
     ]
     <+> namedScratchpadManageHook myScratchPads
@@ -315,12 +315,13 @@ myKeys =
     ("M-v", spawn "virt-manager"),
     ("M-r", spawn "runelite"),
     ("M-i", spawn (myTerminal ++ " -e ~/dotfiles/cht.sh")),
-    ("M-S-s", spawn "spectacle -rbc"),
+    ("M-S-s", spawn "~/.local/bin/screenshot"),
+    ("M1-<Space>", spawn "dunstctl history-pop"),
     ("M-S-c", spawn "dm-confedit"),
     ("M-S-a", spawn "dm-hub"),
     ("M-S-k", spawn "dm-kill"),
     ("M-<Delete>", spawn "dm-logout"),
-    -- KB_GROUP Kill windows
+    -- Kill windows
     ("M-q", kill),
     -- KB_GROUP Workspaces
     ("M-.", nextScreen), -- Switch focus to next monitor
@@ -358,12 +359,12 @@ myKeys =
     ("M-p t", namedScratchpadAction myScratchPads "terminal"),
     ("M-p c", namedScratchpadAction myScratchPads "calculator"),
     -- KB_GROUP Multimedia Keys
-    ("<XF86AudioPlay>", spawn "playerctl play-pause"),
-    ("<XF86AudioPrev>", spawn "playerctl previous"),
-    ("<XF86AudioNext>", spawn "playerctl next"),
-    ("<XF86AudioMute>", spawn "amixer set Master toggle"),
-    ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute"),
-    ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
+    ("<XF86AudioPlay>", spawn "~/.local/bin/changevolume playpause"),
+    ("<XF86AudioPrev>", spawn "~/.local/bin/changevolume previous"),
+    ("<XF86AudioNext>", spawn "~/.local/bin/changevolume next"),
+    ("<XF86AudioMute>", spawn "~/.local/bin/changevolume mute"),
+    ("<XF86AudioLowerVolume>", spawn "~/.local/bin/changevolume down"),
+    ("<XF86AudioRaiseVolume>", spawn "~/.local/bin/changevolume up")
   ]
 
 

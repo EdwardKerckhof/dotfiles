@@ -1,0 +1,9 @@
+#! /bin/sh
+output='%Y-%m-%d_%H:%M:%S_$wx$h.png'
+exec='xclip -selection clipboard -t image/png -i $f && mv $f ~/Pictures/Screenshots'
+
+case "$1" in
+	*) scrot "$output" -zs -q 100 -e "$exec" || exit;;
+esac
+
+notify-send "Screenshot taken."
