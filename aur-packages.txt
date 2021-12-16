@@ -6,7 +6,6 @@ font-manager
 inxi
 mailspring
 mkinitcpio-numlock
-neovide-git
 nerd-fonts-fira-code
 nerd-fonts-jetbrains-mono
 nerd-fonts-mononoki

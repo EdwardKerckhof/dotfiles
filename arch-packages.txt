@@ -1,6 +1,5 @@
 adobe-source-code-pro-fonts
 adobe-source-sans-fonts
-alacritty
 alsa-utils
 amd-ucode
 arc-gtk-theme
@@ -107,7 +106,6 @@ texinfo
 thunar
 thunar-archive-plugin
 trayer
-tree
 ttf-hack
 ttf-joypixels
 ttf-ubuntu-font-family
