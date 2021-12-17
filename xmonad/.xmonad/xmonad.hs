@@ -109,10 +109,11 @@ myBorderWidth :: Dimension
 myBorderWidth = 2
 
 myNormalBorderColor :: String
-myNormalBorderColor = "#1a1b26"
+myNormalBorderColor = "#3B294A"
 
 myFocusedBorderColor :: String
-myFocusedBorderColor = "#46d9ff"
+myFocusedBorderColor = "#93354C"
+
 
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
@@ -139,6 +140,7 @@ myStartupHook = do
   spawnOnce "dunst"
   -- spawn ("sleep 2 && conky -c $HOME/.config/conky/xmonad.conkyrc")
   spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x1a1b26  --height 22")
+  spawnOnce "xinput set-button-map 8 1 2 3 5 4 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
   spawnOnce "nitrogen --restore"
   setWMName "LG3D"
 
