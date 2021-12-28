@@ -112,7 +112,7 @@ myNormalBorderColor :: String
 myNormalBorderColor = "#3B294A"
 
 myFocusedBorderColor :: String
-myFocusedBorderColor = "#93354C"
+myFocusedBorderColor = "#6E5991"
 
 
 windowCount :: X (Maybe String)
@@ -135,7 +135,6 @@ myStartupHook = do
   spawnOnce "lxsession"
   spawnOnce "picom"
   spawnOnce "nm-applet"
-  spawnOnce "volumeicon"
   spawnOnce "blueman-adapters"
   spawnOnce "dunst"
   -- spawn ("sleep 2 && conky -c $HOME/.config/conky/xmonad.conkyrc")
@@ -285,6 +284,7 @@ myManageHook =
      , className =? "GitHub Desktop"                --> doShift ( myWorkspaces !! 1 )
      , className =? "discord"                       --> doShift ( myWorkspaces !! 2 )
      , title =? "Messenger call - Brave"            --> doShift ( myWorkspaces !! 2 )
+     , className =? "Spotify"                       --> doShift ( myWorkspaces !! 3 )
      , className =? "Mailspring"                    --> doShift ( myWorkspaces !! 4 )
      , className =? "Virt-manager"                  --> doShift ( myWorkspaces !! 7 )
      , className =? "obsidian"                      --> doShift ( myWorkspaces !! 8 )

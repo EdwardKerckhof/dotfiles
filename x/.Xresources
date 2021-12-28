@@ -7,39 +7,56 @@ xterm*disallowedWindowOps: 20,21,SetXProp
 ! colors
 
 ! special
-*.foreground:   #B8BEC9
-*.background:   #212121
+*.foreground:   #F8F8F2
+*.background:   #282A36
 *.cursorColor:  #ECEFF4
 *.revCursorColor:  #555555
 
-! black
-*.color0:       #4C566A
-*.color8:       #6C768A
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
 
-! red
-*.color1:       #BF616A
-*.color9:       #af7370
+! ! black
+! *.color0:       #4C566A
+! *.color8:       #6C768A
 
-! green
-*.color2:       #A3BE8C
-*.color10:      #B5CEA8
+! ! red
+! *.color1:       #BF616A
+! *.color9:       #af7370
 
-! yellow
-*.color3:       #D7BA7D
-*.color11:      #E7cb93
+! ! green
+! *.color2:       #A3BE8C
+! *.color10:      #B5CEA8
 
-! blue
-*.color4:       #5e81ac
-*.color12:      #69A8C6
+! ! yellow
+! *.color3:       #D7BA7D
+! *.color11:      #E7cb93
 
-! magenta
-*.color5:       #B48EAD
-*.color13:      #939ede
+! ! blue
+! *.color4:       #5e81ac
+! *.color12:      #69A8C6
 
-! cyan
-*.color6:       #88c0d0
-*.color14:      #69BAC8
+! ! magenta
+! *.color5:       #B48EAD
+! *.color13:      #939ede
 
-! white
-*.color7:       #ABB2BF
-*.color15:      #D8DEE9
+! ! cyan
+! *.color6:       #88c0d0
+! *.color14:      #69BAC8
+
+! ! white
+! *.color7:       #ABB2BF
+! *.color15:      #D8DEE9

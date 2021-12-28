@@ -7,9 +7,9 @@ Config {
     "xft:Noto Color Emoji:pixelsize=12",
     "xtf:Symbols Nerd Font:pixelsize=12"
   ],
-  bgColor = "#1a1b26",
+  bgColor = "#29233f",
   fgColor = "#ff6c6b",
-  position = Static { xpos = 0, ypos = 0, width = 1920, height = 24 },
+  position = Static { xpos = 0, ypos = 0, width = 1920, height = 22 },
   lowerOnStart = True,
   hideOnStart = False,
   allDesktops = True,

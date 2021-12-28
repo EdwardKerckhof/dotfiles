@@ -20,7 +20,6 @@ cmake
 conky
 dialog
 discord
-dmenu
 dnsmasq
 docker
 docker-compose
@@ -112,7 +111,6 @@ ttf-ubuntu-font-family
 unzip
 vim
 virt-manager
-volumeicon
 wget
 which
 wpa_supplicant

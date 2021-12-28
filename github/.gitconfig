@@ -21,3 +21,5 @@
 	helper = cache
 [github]
 	user = EdwardKerckhof
+[gitflow "branch"]
+	master = main
