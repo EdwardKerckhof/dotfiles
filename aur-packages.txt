@@ -5,6 +5,7 @@ dmenu-distrotube-git
 dmscripts-git
 font-manager
 gitflow-avh
+insomnia-bin
 inxi
 jabref-latest
 mailspring
@@ -18,7 +19,6 @@ obsidian-appimage
 paru
 pfetch
 picom-jonaburg-git
-postman-bin
 redshiftgui-bin
 rstudio-desktop-bin
 shell-color-scripts
