@@ -68,9 +68,6 @@ import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
 import XMonad.Util.SpawnOnce
 
--- Config
-import XMonad.Config.Azerty
-
 ------------------------------------------------------------------------
 -- Variables
 
@@ -84,10 +81,13 @@ myTerminal :: String
 myTerminal = "kitty"
 
 myBrowser :: String
-myBrowser = "brave"
+myBrowser = "firefox"
 
 myMusicPlayer :: String
 myMusicPlayer = "spotify"
+
+myEmacs :: String
+myEmacs = "emacsclient -c -a 'emacs' "
 
 myEditor :: String
 myEditor = myTerminal ++ " -e tmux new -A -s code"
@@ -104,6 +104,9 @@ myMailApp = "mailspring"
 
 myNoteTakingApp :: String
 myNoteTakingApp = "obsidian"
+
+myGamingApp :: String
+myGamingApp = "lutris"
 
 myBorderWidth :: Dimension
 myBorderWidth = 2
@@ -273,20 +276,16 @@ myManageHook =
      , className =? "splash"                        --> doFloat
      , className =? "toolbar"                       --> doFloat
      , title =? "Oracle VM VirtualBox Manager"      --> doFloat
-     , className =? "firefox"                       --> doShift ( myWorkspaces !! 0 )
-     , className =? "Chromium"                      --> doShift ( myWorkspaces !! 0 )
-     , className =? "Firefox Developer Edition"     --> doShift ( myWorkspaces !! 0 )
-     , className =? "Brave-browser"                 --> doShift ( myWorkspaces !! 0 )
      , className =? "Code"                          --> doShift ( myWorkspaces !! 1 )
      , className =? "Code - Insiders"               --> doShift ( myWorkspaces !! 1 )
      , className =? "kate"                          --> doShift ( myWorkspaces !! 1 )
-     , className =? "Godot"                         --> doShift ( myWorkspaces !! 1 )
-     , className =? "GitHub Desktop"                --> doShift ( myWorkspaces !! 1 )
      , className =? "discord"                       --> doShift ( myWorkspaces !! 2 )
      , title =? "Messenger call - Brave"            --> doShift ( myWorkspaces !! 2 )
      , className =? "Spotify"                       --> doShift ( myWorkspaces !! 3 )
      , className =? "Mailspring"                    --> doShift ( myWorkspaces !! 4 )
+     , className =? "Lutris"                        --> doShift ( myWorkspaces !! 6 )
      , className =? "Virt-manager"                  --> doShift ( myWorkspaces !! 7 )
+     , className =? "qBittorrent"                   --> doShift ( myWorkspaces !! 7 )
      , className =? "obsidian"                      --> doShift ( myWorkspaces !! 8 )
      , isFullscreen --> doFullFloat
     ]
@@ -314,9 +313,8 @@ myKeys =
     ("M-e", spawn (myMailApp)),
     ("M-n", spawn (myNoteTakingApp)),
     ("M-f", spawn (myFileManager)),
+    ("M-g", spawn (myGamingApp)),
     ("M-v", spawn "virt-manager"),
-    ("M-r", spawn "runelite"),
-    ("M-i", spawn (myTerminal ++ " -e ~/dotfiles/cht.sh")),
     ("M-S-s", spawn "~/.local/bin/screenshot"),
     ("M1-<Space>", spawn "dunstctl history-pop"),
     ("M-S-e", spawn "dm-confedit"),
@@ -390,7 +388,6 @@ main = do
     ewmh
       def
         {
-          keys = belgianKeys <+> keys belgianConfig,
           -- simple stuff
           terminal           = myTerminal,
           focusFollowsMouse  = myFocusFollowsMouse,

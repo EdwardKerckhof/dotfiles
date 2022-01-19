@@ -60,6 +60,7 @@ confedit_list[kitty]="$HOME/.config/kitty/kitty.conf"
 confedit_list[polybar]="$HOME/.config/polybar/config"
 confedit_list[ssh]="$HOME/.ssh/config"
 confedit_list[vim]="$HOME/.vimrc"
+confedit_list[tmux]="$HOME/.tmux.conf"
 confedit_list[xmonad]="$HOME/.xmonad/xmonad.hs"
 confedit_list[xmobar mon1]="$HOME/.config/xmobar/xmobarrc0"
 confedit_list[xmobar mon2]="$HOME/.config/xmobar/xmobarrc1"
@@ -69,6 +70,7 @@ confedit_list[zsh]="$HOME/.config/zsh/.zshrc"
 confedit_list[zsh-exports]="$HOME/.config/zsh/zsh-exports"
 confedit_list[zsh-aliases]="$HOME/.config/zsh/zsh-aliases"
 confedit_list[zsh-prompt]="$HOME/.config/zsh/zsh-prompt"
+confedit_list[starship]="$HOME/.config/starship.toml"
 
 # dm-reddit config
 declare -a reddit_list=(
