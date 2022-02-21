@@ -43,6 +43,7 @@ fzf
 gcc
 gimp
 git
+github-cli
 gnome-disk-utility
 gnome-keyring
 gnu-netcat
@@ -77,6 +78,7 @@ m4
 make
 man-db
 msgpack-cxx
+neofetch
 neovim
 network-manager-applet
 networkmanager
@@ -118,7 +120,9 @@ terminus-font
 texinfo
 thunar
 thunar-archive-plugin
+thunderbird
 trayer
+tree
 ttf-hack
 ttf-joypixels
 ttf-ubuntu-font-family

@@ -83,3 +83,6 @@ alias luamake=/home/edward/language-servers/lua-language-server/3rd/luamake/luam
 
 # Fuzzy file searching
 alias fz='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.git}" | fzf'
+
+# RL
+alias runelite=/opt/RuneLite.AppImage

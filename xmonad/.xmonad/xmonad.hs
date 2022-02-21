@@ -81,7 +81,7 @@ myTerminal :: String
 myTerminal = "kitty"
 
 myBrowser :: String
-myBrowser = "firefox"
+myBrowser = "brave"
 
 myMusicPlayer :: String
 myMusicPlayer = "spotify"
@@ -143,6 +143,7 @@ myStartupHook = do
   -- spawn ("sleep 2 && conky -c $HOME/.config/conky/xmonad.conkyrc")
   spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x1a1b26  --height 22")
   spawnOnce "xinput set-button-map 8 1 2 3 5 4 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+  spawnOnce "xinput set-prop 8 291 1"
   spawnOnce "nitrogen --restore"
   setWMName "LG3D"
 
@@ -284,6 +285,7 @@ myManageHook =
      , className =? "Spotify"                       --> doShift ( myWorkspaces !! 3 )
      , className =? "Mailspring"                    --> doShift ( myWorkspaces !! 4 )
      , className =? "Lutris"                        --> doShift ( myWorkspaces !! 6 )
+     , className =? "net-runelite-launcher-Launcher"--> doShift ( myWorkspaces !! 6 )
      , className =? "Virt-manager"                  --> doShift ( myWorkspaces !! 7 )
      , className =? "qBittorrent"                   --> doShift ( myWorkspaces !! 7 )
      , className =? "obsidian"                      --> doShift ( myWorkspaces !! 8 )
@@ -314,6 +316,7 @@ myKeys =
     ("M-n", spawn (myNoteTakingApp)),
     ("M-f", spawn (myFileManager)),
     ("M-g", spawn (myGamingApp)),
+    ("M-r", spawn "/opt/RuneLite.AppImage"),
     ("M-v", spawn "virt-manager"),
     ("M-S-s", spawn "~/.local/bin/screenshot"),
     ("M1-<Space>", spawn "dunstctl history-pop"),
