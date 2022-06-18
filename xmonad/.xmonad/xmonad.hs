@@ -84,13 +84,13 @@ myBrowser :: String
 myBrowser = "brave"
 
 myMusicPlayer :: String
-myMusicPlayer = "spotify"
+myMusicPlayer = "LD_PRELOAD=/home/edward/.config/spotifywm/spotifywm.so /usr/share/spotify"
 
 myEmacs :: String
 myEmacs = "emacsclient -c -a 'emacs' "
 
 myEditor :: String
-myEditor = myTerminal ++ " -e tmux new -A -s code"
+myEditor = myTerminal ++ " nvim"
 --myEditor = "code"
 
 myFileManager :: String
@@ -103,7 +103,7 @@ myMailApp :: String
 myMailApp = "mailspring"
 
 myNoteTakingApp :: String
-myNoteTakingApp = "obsidian"
+myNoteTakingApp = myTerminal ++ " --title notetaker /home/edward/.local/bin/notetaker"
 
 myGamingApp :: String
 myGamingApp = "lutris"
@@ -115,7 +115,7 @@ myNormalBorderColor :: String
 myNormalBorderColor = "#3B294A"
 
 myFocusedBorderColor :: String
-myFocusedBorderColor = "#6E5991"
+myFocusedBorderColor = "#82AAFF"
 
 
 windowCount :: X (Maybe String)
@@ -132,19 +132,21 @@ myClickJustFocuses = False
 
 myStartupHook :: X ()
 myStartupHook = do
-  -- spawn "killall conky"
   spawn "killall trayer"
 
   spawnOnce "lxsession"
-  spawnOnce "picom"
+  spawnOnce "picom --experimental-backends --backend glx --xrender-sync-fence"
   spawnOnce "nm-applet"
+  spawnOnce "volumeicon"
   spawnOnce "blueman-adapters"
   spawnOnce "dunst"
-  -- spawn ("sleep 2 && conky -c $HOME/.config/conky/xmonad.conkyrc")
-  spawn ("sleep 2 && trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x1a1b26  --height 22")
-  spawnOnce "xinput set-button-map 8 1 2 3 5 4 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
-  spawnOnce "xinput set-prop 8 291 1"
-  spawnOnce "nitrogen --restore"
+  spawn ("sleep 1 && trayer --edge top --margin 16 --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --tint 0x000000 --transparent true --alpha 150 --height 22 --distance 11")
+  spawnOnce "xinput set-button-map 'Logitech M705' 1 2 3 5 4 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+  spawnOnce "xinput set-prop 'Logitech M705' 291 1"
+  spawnOnce "dwall -s style &"
+  spawnOnce "mailspring"
+  spawnOnce "discord"
+  spawnOnce "brave"
   setWMName "LG3D"
 
 ------------------------------------------------------------------------
@@ -152,21 +154,11 @@ myStartupHook = do
 
 myScratchPads :: [NamedScratchpad]
 myScratchPads =
-  [ NS "terminal" spawnTerm findTerm manageTerm,
-    NS "calculator" spawnCalc findCalc manageCalc
-  ]
+  [ NS "notes" spawnNotes findNotes manageNotes ]
   where
-    spawnTerm = myTerminal ++ " -t scratchpad"
-    findTerm = title =? "scratchpad"
-    manageTerm = customFloating $ W.RationalRect l t w h
-      where
-        h = 0.9
-        w = 0.9
-        t = 0.95 - h
-        l = 0.95 - w
-    spawnCalc = "qalculate-gtk"
-    findCalc = className =? "Qalculate-gtk"
-    manageCalc = customFloating $ W.RationalRect l t w h
+    spawnNotes = myNoteTakingApp 
+    findNotes = title =? "notetaker"
+    manageNotes = customFloating $ W.RationalRect l t w h
       where
         h = 0.5
         w = 0.4
@@ -250,7 +242,7 @@ myLayoutHook =
 -- Workspaces
 
 myWorkspaces :: [String]
-myWorkspaces = [" www ", " dev ", " chat ", " mus ", " mail ", " web ", " game ", " sys ", " note "]
+myWorkspaces = [" www ", " dev ", " chat ", " mus ", " mail ", " work ", " game ", " sys ", " note "]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
@@ -264,8 +256,6 @@ myManageHook =
   composeAll
     -- 'doFloat' forces a window to float.  Useful for dialog boxes and such.
     -- using 'doShift ( myWorkspaces !! 7)' sends program to workspace 8!
-    -- I'm doing it this way because otherwise I would have to write out the full
-    -- name of my workspaces and the names would be very long if using clickable workspaces.
     [
       className =? "confirm"                        --> doFloat
      , className =? "file_progress"                 --> doFloat
@@ -283,6 +273,9 @@ myManageHook =
      , className =? "discord"                       --> doShift ( myWorkspaces !! 2 )
      , title =? "Messenger call - Brave"            --> doShift ( myWorkspaces !! 2 )
      , className =? "Spotify"                       --> doShift ( myWorkspaces !! 3 )
+     , className =? "spotify"                       --> doShift ( myWorkspaces !! 3 )
+     , title =? "Spotify"                           --> doShift ( myWorkspaces !! 3 )
+     , title =? "spotify"                           --> doShift ( myWorkspaces !! 3 )
      , className =? "Mailspring"                    --> doShift ( myWorkspaces !! 4 )
      , className =? "Lutris"                        --> doShift ( myWorkspaces !! 6 )
      , className =? "net-runelite-launcher-Launcher"--> doShift ( myWorkspaces !! 6 )
@@ -305,7 +298,7 @@ myKeys =
     ("M-S-r", spawn "xmonad --restart"), -- Restarts xmonad
     ("M-S-q", io exitSuccess), -- Quits xmonad
     -- KB_GROUP Run Prompt
-    ("M-<Space>", spawn "rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -bw 0 -separator-style none -hide-scrollbar true -color-window '#e62f343f' -color-normal '#002f343f,#ffffff,#002f343f,#002f343f,#9575cd' -font 'System San Francisco Display 18'"),
+    ("M-<Space>", spawn "rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -bw 0 -separator-style none -hide-scrollbar true -color-window '#e62f343f' -color-normal '#002f343f,#ffffff,#002f343f,#002f343f,#1A2746' -font 'System San Francisco Display 18'"),
     -- KB_GROUP Useful programs to have a keybinding for launch
     ("M-t", spawn (myTerminal)),
     ("M-b", spawn (myBrowser)),
@@ -313,7 +306,8 @@ myKeys =
     ("M-c", spawn (myEditor)),
     ("M-d", spawn (mySocialApp)),
     ("M-e", spawn (myMailApp)),
-    ("M-n", spawn (myNoteTakingApp)),
+    ("M-n", namedScratchpadAction myScratchPads "notes"),
+    ("M-S-n", spawn (myTerminal ++ " most-recent-note")),
     ("M-f", spawn (myFileManager)),
     ("M-g", spawn (myGamingApp)),
     ("M-r", spawn "/opt/RuneLite.AppImage"),
@@ -360,8 +354,6 @@ myKeys =
     ("M1-S-k", sendMessage MirrorShrink),
     ("M1-S-k", sendMessage MirrorExpand),
     -- KB_GROUP Scratchpads
-    ("M-p t", namedScratchpadAction myScratchPads "terminal"),
-    ("M-p c", namedScratchpadAction myScratchPads "calculator"),
     -- KB_GROUP Multimedia Keys
     ("<XF86AudioPlay>", spawn "~/.local/bin/changevolume playpause"),
     ("<XF86AudioPrev>", spawn "~/.local/bin/changevolume previous"),
@@ -414,10 +406,10 @@ main = do
                     ppOutput = \x ->
                       hPutStrLn xmproc0 x -- xmobar on monitor 1
                         >> hPutStrLn xmproc1 x, -- xmobar on monitor 2
-                    ppCurrent = xmobarColor "#c792ea" "" . wrap "[" "]", -- Current workspace
-                    ppVisible = xmobarColor "#c792ea" "" . clickable, -- Visible but not current workspace
-                    ppHidden = xmobarColor "#82AAFF" "" . wrap "<box type=Top width=1 mt=1 color=#82AAFF>" "</box>" . clickable, -- Hidden workspaces
-                    ppHiddenNoWindows = xmobarColor "#82AAFF" "" . clickable, -- Hidden workspaces (no windows)
+                    ppCurrent = xmobarColor "#82AAFF" "" . wrap "<box type=Bottom width=2 mb=0 color=#82AAFF>" "</box>", -- Current workspace
+                    ppVisible = xmobarColor "#82AAFF" "" . clickable, -- Visible but not current workspace
+                    ppHidden = xmobarColor "#82AAFF" "" . clickable, -- Hidden workspaces
+                    ppHiddenNoWindows = xmobarColor "#b3afc2" "" . clickable, -- Hidden workspaces (no windows)
                     ppTitle = xmobarColor "#b3afc2" "" . shorten 60, -- Title of active window
                     ppSep = "<fc=#666666> <fn=1>|</fn> </fc>", -- Separator character
                     ppUrgent = xmobarColor "#C45500" "" . wrap "!" "!", -- Urgent workspace

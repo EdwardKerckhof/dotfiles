@@ -1,0 +1,3 @@
+#! /bin/sh
+
+ls -r /home/edward/notes/pdf/*.pdf | head -n1 | xargs zathura

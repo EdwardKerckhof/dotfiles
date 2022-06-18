@@ -31,7 +31,7 @@ source "$ZDOTDIR/zsh-functions"
 
 # Normal files to source
 zsh_add_file "zsh-exports"
-zsh_add_file "zsh-vim-mode"
+# zsh_add_file "zsh-vim-mode"
 zsh_add_file "zsh-aliases"
 # zsh_add_file "zsh-prompt"
 eval "$(starship init zsh)"
@@ -40,8 +40,6 @@ eval "$(starship init zsh)"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
-# For more plugins: https://github.com/unixorn/awesome-zsh-plugins
-# More completions https://github.com/zsh-users/zsh-completions
 
 # Key-bindings
 bindkey -s '^o' 'ranger^M'
@@ -50,6 +48,29 @@ bindkey '^p' up-line-or-beginning-search # Up
 bindkey '^n' down-line-or-beginning-search # Down
 bindkey '^k' up-line-or-beginning-search # Up
 bindkey '^j' down-line-or-beginning-search # Down
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+# Easily prefix your current or previous commands with sudo by pressing [esc] twice
+sudo-command-line() {
+    [[ -z $BUFFER ]] && zle up-history
+    if [[ $BUFFER == sudo\ * ]]; then
+        LBUFFER="${LBUFFER#sudo }"
+    elif [[ $BUFFER == $EDITOR\ * ]]; then
+        LBUFFER="${LBUFFER#$EDITOR }"
+        LBUFFER="sudoedit $LBUFFER"
+    elif [[ $BUFFER == sudoedit\ * ]]; then
+        LBUFFER="${LBUFFER#sudoedit }"
+        LBUFFER="$EDITOR $LBUFFER"
+    else
+        LBUFFER="sudo $LBUFFER"
+    fi
+}
+zle -N sudo-command-line
+# Defined shortcut keys: [Esc] [Esc]
+bindkey -M emacs '\e\e' sudo-command-line
+bindkey -M vicmd '\e\e' sudo-command-line
+bindkey -M viins '\e\e' sudo-command-line
 
 # Random color script
 colorscript random
@@ -71,3 +92,6 @@ export BROWSER='brave'
 # fnm
 export PATH=/home/edward/.fnm:$PATH
 eval "`fnm env`"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

@@ -1,16 +1,16 @@
 Config {
-  font = "xft:FuraCode:weight=bold:pixelsize=10:antialias=true:hinting=true",
+  font = "xft:JetBrainsMono:weight=bold:pixelsize=10:antialias=true:hinting=true",
   additionalFonts = [
     "xft:Fira Code:pixelsize=12:antialias=true:hinting=true",
-    "xft:Font Awesome 5 Free Solid:pixelsize=12",
-    "xft:Font Awesome 5 Brands:pixelsize=12",
+    "xft:Font Awesome 6 Free Solid:pixelsize=12",
+    "xft:Font Awesome 6 Brands:pixelsize=12",
     "xft:Noto Color Emoji:pixelsize=12",
     "xtf:Symbols Nerd Font:pixelsize=12"
   ],
-  bgColor = "#29233f",
+  bgColor = "black",
   fgColor = "#ff6c6b",
-  alpha = 0,
-  position = Static { xpos = 0, ypos = 0, width = 1920, height = 22 },
+  alpha = 120,
+  position = Static { xpos = 17, ypos = 10, width = 1887, height = 24 },
   lowerOnStart = True,
   hideOnStart = False,
   allDesktops = True,
@@ -19,11 +19,11 @@ Config {
   overrideRedirect = True,
   commands = [
     -- Time and date
-    Run Date "<fn=2>\xf017</fn> %a %d %b %Y - %H:%M:%S " "date" 10,
+    Run Date "<fn=2>\xf017</fn> %d %b - %H:%M:%S " "date" 10,
     Run UnsafeStdinReader,
-    Run Com "/home/edward/.config/xmobar/currently-playing.sh" [] "spotify" 25
+    Run Com "/home/edward/.config/xmobar/playing.sh" [] "playing" 10
   ],
   sepChar = "%",
   alignSep = "}{",
-  template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{ <fc=#98be65><fn=3></fn> %spotify%</fc>  <fc=#666666>|</fc>  <fc=#46d9ff><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action></fc>"
+  template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=0 color=#93c47d><fc=#93c47d><fn=3> </fn> %playing%</fc></box>  <box type=Bottom width=2 mb=0 color=#82AAFF><fc=#82AAFF>%date%</fc></box>"
 }

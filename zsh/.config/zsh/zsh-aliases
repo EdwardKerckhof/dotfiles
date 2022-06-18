@@ -2,9 +2,26 @@
 alias j='z'
 alias f='zi'
 alias g='lazygit'
+alias gs='git status'
 alias gc='git commit'
 alias gp='git push'
 alias ga='git add'
+alias gf='git flow'
+alias dcu='docker-compose up --remove-orphans'
+alias dcub='docker-compose up --remove-orphans --build'
+alias dcd='docker-compose down'
+
+# JIMBER
+alias dcud='cd /mnt/Development/Work/Jimber/digitaltwin-dev/dev && docker-compose up --remove-orphans'
+alias dcubd='cd /mnt/Development/Work/Jimber/digitaltwin-dev/dev && docker-compose up --remove-orphans --build'
+alias dcdd='cd /mnt/Development/Work/Jimber/digitaltwin-dev/dev && docker-compose down'
+alias dcus='cd /mnt/Development/Work/Jimber/digitaltwin-dev/spawner && docker-compose up --remove-orphans'
+alias dcubs='cd /mnt/Development/Work/Jimber/digitaltwin-dev/spawner && docker-compose up --remove-orphans --build'
+alias dcds='cd /mnt/Development/Work/Jimber/digitaltwin-dev/spawner && docker-compose down'
+
+# BP
+alias latexmkbp='latexmk -xelatex -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error "kerckhof_edward_voorstel"'
+
 alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git' ';' -print0 | xargs -I {} -0 git -C {} pull -q"
 alias nvimrc='nvim ~/.config/nvim/'
 alias lvimrc='nvim ~/.config/lvim/config.lua'

@@ -2,16 +2,16 @@ Config {
   font = "xft:JetBrainsMono:weight=bold:pixelsize=10:antialias=true:hinting=true",
   additionalFonts = [
     "xft:Fira Code:pixelsize=12:antialias=true:hinting=true",
-    "xft:Font Awesome 5 Free Solid:pixelsize=12",
-    "xft:Font Awesome 5 Brands:pixelsize=12",
+    "xft:Font Awesome 6 Free Solid:pixelsize=12",
+    "xft:Font Awesome 6 Brands:pixelsize=12",
     "xft:Noto Color Emoji:pixelsize=12",
     "xtf:Symbols Nerd Font:pixelsize=12",
     "xtf:Twemoji:pixelsize=12"
   ],
-  bgColor = "#29233F",
+  bgColor = "black",
   fgColor = "#ff6c6b",
-  alpha = 0,
-  position = Static { xpos = 1920 , ypos = 0, width = 1920, height = 22 },
+  alpha = 110,
+  position = Static { xpos = 1937 , ypos = 10, width = 1887, height = 24 },
   lowerOnStart = True,
   hideOnStart = False,
   allDesktops = True,
@@ -19,7 +19,7 @@ Config {
   iconRoot = ".xmonad/xpm/",
   commands = [
     -- Time and date
-    Run Date "<fn=2>\xf017</fn> %a %d %b %Y - %H:%M:%S " "date" 10,
+    Run Date "<fn=2>\xf017</fn> %d %b - %H:%M:%S " "date" 10,
     -- Network up and down
     Run Network "enp5s0" ["-t", "<fn=2>\xf0ab</fn>  <rx>kb  <fn=2>\xf0aa</fn>  <tx>kb"] 20,
     -- Cpu usage in percent
@@ -40,5 +40,5 @@ Config {
   ],
   sepChar = "%",
   alignSep = "}{",
-  template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{ <fc=#51afef><fn=3></fn>  <action=`kitty -e htop`>%uname%</action> </fc>  <fc=#666666>|</fc>  <fc=#ecbe7b><action=`kitty -e htop`>%cpu%</action></fc>  <fc=#666666>|</fc>  <fc=#ff6c6b><action=`kitty -e htop`>%memory%</action></fc>  <fc=#666666>|</fc>  <fc=#a9a1e1><action=`kitty -e htop`>%disku%</action></fc>  <fc=#666666>|</fc>  <fc=#98be65><action=`kitty -e sudo iftop`>%enp5s0%</action></fc>  <fc=#666666>|</fc>  <fc=#c678dd><fn=2></fn>  <action=`kitty -e sudo pacman -Syu`>%pacupdate%</action></fc>  <fc=#666666>|</fc>  <fc=#46d9ff>%date%</fc>  <fc=#666666>|</fc> %trayerpad%"
+  template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=0 color=#93c47d><fc=#93c47d><action=`kitty -e htop`>%memory%</action></fc></box>  <box type=Bottom width=2 mb=0 color=#76a5af><fc=#76a5af><action=`kitty -e htop`>%disku%</action></fc></box>  <box type=Bottom width=2 mb=0 color=#6fa8dc><fc=#6fa8dc><fn=2></fn>  <action=`kitty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>  <box type=Bottom width=2 mb=0 color=#82AAFF><fc=#82AAFF>%date%</fc></box> <fc=#666666>|</fc>%trayerpad%"
 }
