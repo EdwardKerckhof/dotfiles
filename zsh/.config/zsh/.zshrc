@@ -95,3 +95,6 @@ eval "`fnm env`"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# bun completions
+[ -s "/home/edward/.bun/_bun" ] && source "/home/edward/.bun/_bun"

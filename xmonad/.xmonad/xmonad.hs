@@ -29,10 +29,12 @@ import qualified Data.Map as M
 -- Hooks
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcomposite in obs.
-import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
+import XMonad.Hooks.ManageDocks (avoidStruts, docks, manageDocks, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat, doCenterFloat)
 import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.StatusBar
+import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.WorkspaceHistory
 
 -- Layouts
@@ -72,7 +74,7 @@ import XMonad.Util.SpawnOnce
 -- Variables
 
 myFont :: String
-myFont = "xft:JetBrainsMono Nerd Font:regular:size=11:antialias=true:hinting=true"
+myFont = "xft:JetBrainsMono Nerd Font Mono:regular:size=11:antialias=true:hinting=true"
 
 myModMask :: KeyMask
 myModMask = mod4Mask
@@ -137,13 +139,12 @@ myStartupHook = do
   spawnOnce "lxsession"
   spawnOnce "picom --experimental-backends --backend glx --xrender-sync-fence"
   spawnOnce "nm-applet"
-  spawnOnce "volumeicon"
   spawnOnce "blueman-adapters"
   spawnOnce "dunst"
   spawn ("sleep 1 && trayer --edge top --margin 16 --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --tint 0x000000 --transparent true --alpha 150 --height 22 --distance 11")
   spawnOnce "xinput set-button-map 'Logitech M705' 1 2 3 5 4 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
-  spawnOnce "xinput set-prop 'Logitech M705' 291 1"
-  spawnOnce "dwall -s style &"
+  spawnOnce "xinput set-prop 'Logitech M705' 283 1"
+  spawnOnce "dwall -s forest &"
   spawnOnce "mailspring"
   spawnOnce "discord"
   spawnOnce "brave"
@@ -266,6 +267,7 @@ myManageHook =
      , className =? "pinentry-gtk-2"                --> doFloat
      , className =? "splash"                        --> doFloat
      , className =? "toolbar"                       --> doFloat
+     , className =? "TrayCalendar"                  --> doIgnore
      , title =? "Oracle VM VirtualBox Manager"      --> doFloat
      , className =? "Code"                          --> doShift ( myWorkspaces !! 1 )
      , className =? "Code - Insiders"               --> doShift ( myWorkspaces !! 1 )
@@ -396,11 +398,11 @@ main = do
           -- hooks, layouts
           layoutHook         = showWName' myShowWNameTheme $ myLayoutHook,
           manageHook         = myManageHook <+> manageDocks,
-          handleEventHook    = docksEventHook,
+          -- handleEventHook    = docksEventHook,
           startupHook        = myStartupHook,
           logHook =
             dynamicLogWithPP $
-              namedScratchpadFilterOutWorkspacePP $
+              filterOutWsPP [scratchpadWorkspaceTag] $
                 xmobarPP
                   { -- the following variables beginning with 'pp' are settings for xmobar.
                     ppOutput = \x ->

@@ -10,8 +10,10 @@ downgrade
 flutter
 gitflow-avh
 google-chrome
+insomnia
 inxi
 jabref-latest
+lib32-gtk-engine-murrine
 mailspring
 miktex-git
 minecraft-launcher
@@ -24,6 +26,7 @@ ngrok
 obs-studio-git
 obsidian-appimage
 otf-openmoji
+pamac-aur
 paru
 pfetch
 picom-jonaburg-git

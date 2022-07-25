@@ -1,7 +1,7 @@
 Config {
-  font = "xft:JetBrainsMono:weight=bold:pixelsize=10:antialias=true:hinting=true",
+  font = "xft:FiraCode:weight=bold:pixelsize=11:antialias=true:hinting=true",
   additionalFonts = [
-    "xft:Fira Code:pixelsize=12:antialias=true:hinting=true",
+    "xft:Mononoki:pixelsize=11:antialias=true:hinting=true",
     "xft:Font Awesome 6 Free Solid:pixelsize=12",
     "xft:Font Awesome 6 Brands:pixelsize=12",
     "xft:Noto Color Emoji:pixelsize=12",
@@ -11,34 +11,29 @@ Config {
   bgColor = "black",
   fgColor = "#ff6c6b",
   alpha = 110,
-  position = Static { xpos = 1937 , ypos = 10, width = 1887, height = 24 },
+  position = Static { xpos = 1937 , ypos = 10, width = 1887, height = 26 },
   lowerOnStart = True,
   hideOnStart = False,
   allDesktops = True,
   persistent = True,
   iconRoot = ".xmonad/xpm/",
   commands = [
+    Run Com "echo" ["<fn=3>\xf17c</fn>"] "penguin" 3600,
     -- Time and date
     Run Date "<fn=2>\xf017</fn> %d %b - %H:%M:%S " "date" 10,
     -- Network up and down
     Run Network "enp5s0" ["-t", "<fn=2>\xf0ab</fn>  <rx>kb  <fn=2>\xf0aa</fn>  <tx>kb"] 20,
-    -- Cpu usage in percent
     Run Cpu ["-t", "<fn=2>\xf108</fn>  (<total>%)","-H","50","--high","red"] 20,
-    -- Ram used number and percent
     Run Memory ["-t", "<fn=2>\xf233</fn>  <used>M (<usedratio>%)"] 20,
-    -- Disk space free
     Run DiskU [("/home", "<fn=2>\xf0c7</fn>  <free> free")] [] 60,
-    -- Runs custom script to check for pacman updates.
     Run Com "/home/edward/.config/xmobar/pacupdate.sh" [] "pacupdate" 36000,
-    -- Runs a standard shell command 'uname -r' to get kernel version
-    Run Com "uname" ["-r"] "" 3600,
-    -- Script that dynamically adjusts xmobar padding depending on number of trayer icons.
+    Run Com "/home/edward/.config/xmobar/uname.sh" [] "uname" 36000,
+    Run Com "/home/edward/.config/xmobar/volume.sh" [] "volume" 1,
+    Run Com "/home/edward/.config/xmobar/toggle-volume.sh" [] "toggle" 36000,
     Run Com "/home/edward/.config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 25,
-    -- Prints out the left side items such as workspaces, layout, etc.
-    -- The workspaces are 'clickable' in my configs.
     Run UnsafeStdinReader
   ],
   sepChar = "%",
   alignSep = "}{",
-  template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=0 color=#93c47d><fc=#93c47d><action=`kitty -e htop`>%memory%</action></fc></box>  <box type=Bottom width=2 mb=0 color=#76a5af><fc=#76a5af><action=`kitty -e htop`>%disku%</action></fc></box>  <box type=Bottom width=2 mb=0 color=#6fa8dc><fc=#6fa8dc><fn=2></fn>  <action=`kitty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>  <box type=Bottom width=2 mb=0 color=#82AAFF><fc=#82AAFF>%date%</fc></box> <fc=#666666>|</fc>%trayerpad%"
+  template = "   <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{ <box type=Bottom width=2 mb=0 color=#b6d7a8><fc=#b6d7a8><action=`gnome-disks`>%disku%</action></fc></box>  <box type=Bottom width=2 mb=0 color=#6fa8dc><fc=#6fa8dc><action=`amixer -D pulse set Master 1+ toggle`><fn=2></fn> %volume%</action></fc></box>  <box type=Bottom width=2 mb=0 color=#8e7cc3><fc=#8e7cc3><action=`pamac-manager`><fn=2></fn>%pacupdate%</action></fc></box>  <box type=Bottom width=2 mb=0 color=#c27ba0><fc=#c27ba0>%penguin%<action=`kitty -e htop`> %uname%</action> </fc></box>  <box type=Bottom width=2 mb=0 color=#76a5af><fc=#76a5af><action=`~/.local/bin/traycalendar --no-tray --toggle &> /dev/null`>%date%</action></fc></box>  <fc=#666666>|</fc>%trayerpad%"
 }
