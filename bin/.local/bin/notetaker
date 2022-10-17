@@ -2,12 +2,12 @@
 
 fileName="$HOME/notes/notes/note-$(date +%d-%m-%Y).md"
 
-if [ ! -f $fileName ]; then
-  echo "# Notes for $(date +%d-%m-%Y)" > $fileName
+if [ ! -f "$fileName" ]; then
+  echo "# Notes for $(date +%d-%m-%Y)" > "$fileName"
 fi
 
 nvim -c "norm Go" \
   -c "norm Go## $(date +%H:%M)" \
   -c "norm G2o" \
   -c "norm zz" \
-  -c "startinsert" $fileName
+  -c "startinsert" "$fileName"

@@ -13,7 +13,7 @@ DMBROWSER="brave"
 
 DMTERM="kitty -e"
 
-DMEDITOR="${DMTERM} nvim"
+DMEDITOR="${DMTERM} lvim"
 
 # dm-logout
 logout_locker='slock'

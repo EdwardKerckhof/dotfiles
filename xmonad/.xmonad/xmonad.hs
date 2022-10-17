@@ -29,12 +29,10 @@ import qualified Data.Map as M
 -- Hooks
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.EwmhDesktops  -- for some fullscreen events, also for xcomposite in obs.
-import XMonad.Hooks.ManageDocks (avoidStruts, docks, manageDocks, ToggleStruts(..))
+import XMonad.Hooks.ManageDocks (avoidStruts, docksEventHook, manageDocks, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat, doCenterFloat)
 import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
-import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.WorkspaceHistory
 
 -- Layouts
@@ -92,8 +90,7 @@ myEmacs :: String
 myEmacs = "emacsclient -c -a 'emacs' "
 
 myEditor :: String
-myEditor = myTerminal ++ " nvim"
---myEditor = "code"
+myEditor = myTerminal ++ " --title lvim lvim"
 
 myFileManager :: String
 myFileManager = "thunar"
@@ -142,9 +139,10 @@ myStartupHook = do
   spawnOnce "blueman-adapters"
   spawnOnce "dunst"
   spawn ("sleep 1 && trayer --edge top --margin 16 --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --tint 0x000000 --transparent true --alpha 150 --height 22 --distance 11")
+  spawnOnce "xinput set-prop 'Logitech M705' 'libinput Natural Scrolling Enabled' 1"
   spawnOnce "xinput set-button-map 'Logitech M705' 1 2 3 5 4 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
-  spawnOnce "xinput set-prop 'Logitech M705' 283 1"
-  spawnOnce "dwall -s forest &"
+  spawnOnce "xmodmap ~/.Xmodmap"
+  spawnOnce "nitrogen --restore &"
   spawnOnce "mailspring"
   spawnOnce "discord"
   spawnOnce "brave"
@@ -283,7 +281,6 @@ myManageHook =
      , className =? "net-runelite-launcher-Launcher"--> doShift ( myWorkspaces !! 6 )
      , className =? "Virt-manager"                  --> doShift ( myWorkspaces !! 7 )
      , className =? "qBittorrent"                   --> doShift ( myWorkspaces !! 7 )
-     , className =? "obsidian"                      --> doShift ( myWorkspaces !! 8 )
      , isFullscreen --> doFullFloat
     ]
     <+> namedScratchpadManageHook myScratchPads
@@ -398,11 +395,11 @@ main = do
           -- hooks, layouts
           layoutHook         = showWName' myShowWNameTheme $ myLayoutHook,
           manageHook         = myManageHook <+> manageDocks,
-          -- handleEventHook    = docksEventHook,
+          handleEventHook    = docksEventHook,
           startupHook        = myStartupHook,
           logHook =
             dynamicLogWithPP $
-              filterOutWsPP [scratchpadWorkspaceTag] $
+              namedScratchpadFilterOutWorkspacePP $
                 xmobarPP
                   { -- the following variables beginning with 'pp' are settings for xmobar.
                     ppOutput = \x ->

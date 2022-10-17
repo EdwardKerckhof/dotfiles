@@ -2,8 +2,11 @@ adobe-source-code-pro-fonts
 adobe-source-han-sans-otc-fonts
 adobe-source-han-serif-otc-fonts
 adobe-source-sans-fonts
+alacritty
 alsa-utils
 amd-ucode
+ansible
+ansible-core
 arc-gtk-theme
 arc-icon-theme
 autoconf
@@ -27,6 +30,7 @@ discord
 dnsmasq
 docker
 docker-compose
+dolphin
 dotnet-sdk
 dunst
 edk2-ovmf
@@ -57,10 +61,12 @@ gparted
 groff
 grub
 grub-customizer
+gsmartcontrol
 gvfs-smb
 htop
 icoutils
 imagemagick
+inetutils
 iptables-nft
 jdk-openjdk
 jdk11-openjdk
@@ -70,6 +76,7 @@ jre8-openjdk
 keepassxc
 kitty
 lazygit
+libayatana-appindicator
 libmtp
 libtool
 libxcrypt-compat
@@ -107,9 +114,11 @@ ntfs-3g
 nvidia-dkms
 nvidia-settings
 nvidia-utils
+opencl-nvidia
 openvpn
 os-prober
 otf-font-awesome
+packer
 pacman-contrib
 pamixer
 pandoc
@@ -119,6 +128,7 @@ pipewire-pulse
 pkgconf
 plasma-desktop
 playerctl
+progress
 python-pip
 qalculate-gtk
 qbittorrent
@@ -132,6 +142,7 @@ scrot
 sddm
 slock
 sshfs
+sshpass
 steam
 stow
 stylua
@@ -148,14 +159,17 @@ tree
 ttf-hack
 ttf-jetbrains-mono
 ttf-joypixels
+ttf-sourcecodepro-nerd
 ttf-ubuntu-font-family
 unrar
 unzip
 vim
 virt-manager
+virtualbox-guest-iso
 wget
 which
 wine
+wireguard-tools
 wireplumber
 wpa_supplicant
 xdg-desktop-portal-gnome
@@ -179,6 +193,7 @@ xorg-xset
 xorg-xsetroot
 xsel
 xterm
+youtube-dl
 zathura
 zathura-djvu
 zathura-pdf-poppler

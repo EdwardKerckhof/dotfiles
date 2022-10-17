@@ -9,7 +9,7 @@ Config {
   ],
   bgColor = "black",
   fgColor = "#ff6c6b",
-  alpha = 120,
+  alpha = 110,
   position = Static { xpos = 17, ypos = 10, width = 1887, height = 26 },
   lowerOnStart = True,
   hideOnStart = False,

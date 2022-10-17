@@ -13,6 +13,11 @@ alias dcu='docker-compose up --remove-orphans'
 alias dcub='docker-compose up --remove-orphans --build'
 alias dcd='docker-compose down'
 
+# KITTY
+alias s="kitty +kitten ssh"
+alias ssh="kitty +kitten ssh"
+alias icat="kitty +kitten icat"
+
 # JIMBER
 alias dcud='cd /mnt/Development/Work/Jimber/digitaltwin-dev/dev && docker-compose up --remove-orphans'
 alias dcubd='cd /mnt/Development/Work/Jimber/digitaltwin-dev/dev && docker-compose up --remove-orphans --build'
@@ -84,9 +89,9 @@ alias yta-wav='youtube-dl --extract-audio --audio-format wav'
 alias ytv-best='youtube-dl -f bestvideo+bestaudio'
 
 # nvim
-alias vim='nvim'
-alias vi='nvim'
-alias v='nvim'
+alias vim='lvim'
+alias vi='lvim'
+alias v='lvim'
 
 # emacs
 alias emacs="emacsclient -c -a 'emacs'"

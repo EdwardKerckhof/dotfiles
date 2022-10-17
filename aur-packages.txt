@@ -1,4 +1,5 @@
 android-studio
+archlinux-tweak-tool-git
 balena-etcher
 betterdiscordctl
 brave-bin
@@ -21,7 +22,6 @@ mkinitcpio-numlock
 nerd-fonts-fira-code
 nerd-fonts-jetbrains-mono
 nerd-fonts-mononoki
-nerd-fonts-source-code-pro
 ngrok
 obs-studio-git
 obsidian-appimage
@@ -31,7 +31,10 @@ paru
 pfetch
 picom-jonaburg-git
 postman-bin
+qomui
 redshiftgui-bin
+rpi-imager
+sddm-sugar-dark
 shell-color-scripts
 spicetify-cli
 spotify
@@ -49,5 +52,6 @@ ttf-symbola
 ttf-twemoji
 ttf-twemoji-color
 visual-studio-code-bin
+wireguard-go-git
 xwinwrap-git
 zoom
