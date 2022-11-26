@@ -5,8 +5,11 @@ SAVEHIST=1000000
 export MANPAGER='lvim +Man!'
 export MANWIDTH=999
 export EDITOR='lvim'
+export SUDO_EDITOR='lvim'
 export TERMINAL='kitty'
+export TERM='xterm'
 export BROWSER='brave'
+export CHROME_EXECUTABLE='brave'
 export HISTCONTROL='ignoreboth'
 export WINEPREFIX='/mnt/VMS/Wine'
 export JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
@@ -18,10 +21,28 @@ export PATH=$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH
 export PATH=$HOME/.fnm:$PATH
 export PATH=$HOME/.bun/bin:$PATH
 export PATH=$HOME/Android/Sdk/platform-tools:$PATH
+export PATH=$HOME/Android/Sdk/tools:$PATH
+export PATH=$HOME/Android/Sdk/tools/bin:$PATH
+export PATH=$HOME/Android/Sdk/emulator/emulator:$PATH
 export PATH=$HOME/node_modules/.bin:$PATH
 export PATH=$HOME/.emacs.d/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$JAVA_HOME/bin:$PATH
 export PATH=$PNPM_HOME:$PATH
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH=/usr/local/texlive/2021/bin/x86_64-linux:$PATH
+# pnpm
+export PNPM_HOME="/home/edward/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
+# bun
+export BUN_INSTALL="/home/edward/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun
+export BUN_INSTALL="/home/edward/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

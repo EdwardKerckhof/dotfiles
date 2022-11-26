@@ -132,18 +132,21 @@ myClickJustFocuses = False
 myStartupHook :: X ()
 myStartupHook = do
   spawn "killall trayer"
-
+  spawn "killall redshiftgui"
+  spawn "killall solaar"
   spawnOnce "lxsession"
   spawnOnce "picom --experimental-backends --backend glx --xrender-sync-fence"
   spawnOnce "nm-applet"
   spawnOnce "blueman-adapters"
   spawnOnce "dunst"
   spawn ("sleep 1 && trayer --edge top --margin 16 --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --tint 0x000000 --transparent true --alpha 150 --height 22 --distance 11")
-  spawnOnce "xinput set-prop 'Logitech M705' 'libinput Natural Scrolling Enabled' 1"
-  spawnOnce "xinput set-button-map 'Logitech M705' 1 2 3 5 4 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
+  spawnOnce "xinput set-prop 'Logitech USB Receiver' 'libinput Natural Scrolling Enabled' 1"
+  spawnOnce "xinput set-button-map 'Logitech USB Receiver' 1 2 3 5 4 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20"
   spawnOnce "xmodmap ~/.Xmodmap"
   spawnOnce "nitrogen --restore &"
   spawnOnce "mailspring"
+  spawnOnce "redshiftgui &"
+  spawnOnce "sudo solaar --window=hide &"
   spawnOnce "discord"
   spawnOnce "brave"
   setWMName "LG3D"
@@ -295,7 +298,6 @@ myKeys =
   -- KB_GROUP Xmonad
   [ ("M-C-r", spawn "xmonad --recompile"), -- Recompiles xmonad
     ("M-S-r", spawn "xmonad --restart"), -- Restarts xmonad
-    ("M-S-q", io exitSuccess), -- Quits xmonad
     -- KB_GROUP Run Prompt
     ("M-<Space>", spawn "rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -bw 0 -separator-style none -hide-scrollbar true -color-window '#e62f343f' -color-normal '#002f343f,#ffffff,#002f343f,#002f343f,#1A2746' -font 'System San Francisco Display 18'"),
     -- KB_GROUP Useful programs to have a keybinding for launch

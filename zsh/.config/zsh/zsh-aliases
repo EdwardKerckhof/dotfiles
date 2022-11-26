@@ -1,7 +1,8 @@
 #!/bin/sh
-alias j='z'
-alias f='zi'
-alias g='lazygit'
+alias cp='xcp'
+alias rm='rip'
+alias cat='bat'
+alias gg='lazygit'
 alias gs='git status'
 alias gss='git stash'
 alias gsp='git stash pop'
@@ -15,16 +16,7 @@ alias dcd='docker-compose down'
 
 # KITTY
 alias s="kitty +kitten ssh"
-alias ssh="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
-
-# JIMBER
-alias dcud='cd /mnt/Development/Work/Jimber/digitaltwin-dev/dev && docker-compose up --remove-orphans'
-alias dcubd='cd /mnt/Development/Work/Jimber/digitaltwin-dev/dev && docker-compose up --remove-orphans --build'
-alias dcdd='cd /mnt/Development/Work/Jimber/digitaltwin-dev/dev && docker-compose down'
-alias dcus='cd /mnt/Development/Work/Jimber/digitaltwin-dev/spawner && docker-compose up --remove-orphans'
-alias dcubs='cd /mnt/Development/Work/Jimber/digitaltwin-dev/spawner && docker-compose up --remove-orphans --build'
-alias dcds='cd /mnt/Development/Work/Jimber/digitaltwin-dev/spawner && docker-compose down'
 
 # BP
 alias latexmkbp='latexmk -xelatex -shell-escape -synctex=1 -interaction=nonstopmode -file-line-error "kerckhof_edward_voorstel"'
@@ -43,11 +35,6 @@ alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pac
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-
-# confirm before overwriting something
-alias cp="cp -i"
-alias mv='mv -i'
-alias rm='rm -i'
 
 # easier to read disk
 alias df='df -h'     # human-readable sizes

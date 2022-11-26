@@ -40,6 +40,7 @@ eval "$(starship init zsh)"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 zsh_add_plugin "zsh-users/zsh-syntax-highlighting"
 zsh_add_plugin "hlissner/zsh-autopair"
+zsh_add_plugin "agkozak/zsh-z"
 
 # Key-bindings
 bindkey -s '^o' 'ranger^M'

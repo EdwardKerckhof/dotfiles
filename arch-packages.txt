@@ -13,6 +13,7 @@ autoconf
 automake
 base
 bison
+bitwarden
 bleachbit
 bless
 blueman
@@ -32,6 +33,7 @@ docker
 docker-compose
 dolphin
 dotnet-sdk
+dpkg
 dunst
 edk2-ovmf
 efibootmgr
@@ -66,6 +68,7 @@ gvfs-smb
 htop
 icoutils
 imagemagick
+imwheel
 inetutils
 iptables-nft
 jdk-openjdk
@@ -111,6 +114,7 @@ nitrogen
 nmap
 noto-fonts-emoji
 ntfs-3g
+ntp
 nvidia-dkms
 nvidia-settings
 nvidia-utils
@@ -141,6 +145,7 @@ rofi
 scrot
 sddm
 slock
+solaar
 sshfs
 sshpass
 steam
@@ -163,6 +168,7 @@ ttf-sourcecodepro-nerd
 ttf-ubuntu-font-family
 unrar
 unzip
+vi
 vim
 virt-manager
 virtualbox-guest-iso

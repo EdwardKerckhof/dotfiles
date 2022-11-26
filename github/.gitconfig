@@ -2,26 +2,50 @@
 	email = edward@zonedev.be
 	name = EdwardKerckhof
 	signingkey = C2CFEE9553A3167E
+
 [core]
 	editor = nvim
+  pager = delta
+
 [gpg]
 	program = gpg2
+
 [commit]
 	gpgsign = true
+
 [init]
 	defaultBranch = main
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
 [pull]
 	rebase = true
+
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+
 [credential]
 	helper = cache
+
 [github]
 	user = EdwardKerckhof
+
 [gitflow "branch"]
 	master = main
+
 [url "git@github.com:"]
 	insteadOf = https://github.com/

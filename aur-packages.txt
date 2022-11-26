@@ -31,14 +31,12 @@ paru
 pfetch
 picom-jonaburg-git
 postman-bin
-qomui
 redshiftgui-bin
 rpi-imager
 sddm-sugar-dark
 shell-color-scripts
 spicetify-cli
 spotify
-stremio
 tailwindcss-language-server
 teams
 texlive-installer
